@@ -1,7 +1,8 @@
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect,useContext} from 'react';
+import {ContentContext} from "../../context/ContextProvider"
 import {
   View,
   StyleSheet,
@@ -19,11 +20,13 @@ import {useNavigation} from '@react-navigation/native';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const RecommendedTab = () => {
+  const {state} = useContext(ContentContext);
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
   const musicList = [
     {
       id: '0',
+      index:0,
       title: 'Jordann - Dehors',
       artist: 'Jordann',
       album: 'Dehors Album',
@@ -145,7 +148,7 @@ const RecommendedTab = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={musicList}
+        data={state.musicList}
         renderItem={({item}) => (
           <SongItem
             item={item}

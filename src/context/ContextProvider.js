@@ -12,21 +12,17 @@ const reducer = (state, action) => {
         ...state,
         routerConfig: action.payload,
       };
-    case 'communityTab':
+    case 'addFirst':
       return {
         ...state,
-        communityTabBarBadge: action.payload,
+        musicList: [action.payload, ...state.musicList],
       };
-    case 'eventTab':
+    case 'addEnd':
       return {
         ...state,
-        eventTabBarBadge: action.payload,
+        musicList: [...state.musicList, action.payload],
       };
-    case 'safeAreaViewStatusAc':
-      return {
-        ...state,
-        safeAreaViewStatus: action.payload,
-      };
+
     default:
       return state;
   }
@@ -37,6 +33,7 @@ export const ContextProvider = ({children}) => {
     musicList: [
       {
         id: '0',
+        index: 0,
         title: 'Jordann - Dehors',
         artist: 'Jordann',
         album: 'Dehors Album',
@@ -58,6 +55,7 @@ export const ContextProvider = ({children}) => {
       },
       {
         id: '1',
+        index: 1,
         title: 'bôa - DUVET',
         artist: 'bôa - DUVET',
         album: 'Twilight',
@@ -77,6 +75,7 @@ export const ContextProvider = ({children}) => {
       },
       {
         id: '2',
+        index: 2,
         title: '马思唯 - 登机',
         artist: '马思唯',
         album: 'Humble Swag Album',
@@ -100,6 +99,7 @@ export const ContextProvider = ({children}) => {
       },
       {
         id: '3',
+        index: 3,
         title: 'Jordann - Dehors',
         artist: 'Jordann',
         album: 'Dehors Album',
@@ -121,6 +121,7 @@ export const ContextProvider = ({children}) => {
       },
       {
         id: '4',
+        index: 4,
         title: 'bôa - DUVET',
         artist: 'bôa - DUVET',
         album: 'Twilight',
@@ -140,6 +141,7 @@ export const ContextProvider = ({children}) => {
       },
       {
         id: '5',
+        index: 5,
         title: '马思唯 - 登机',
         artist: '马思唯',
         album: 'Humble Swag Album',

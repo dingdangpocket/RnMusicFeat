@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useRef, useState, useContext} from 'react';
+import React, {useRef, useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -18,13 +18,31 @@ const MusicPlayer = ({route}) => {
   const scrollViewRef = useRef(null);
 
   const {params} = route;
-  const {state} = useContext(ContentContext);
+  const {state, dispatch} = useContext(ContentContext);
   //   console.log(params);
   const refPlayer = useRef(null);
   const [rate] = useState(1.0);
   const [volume, setVolume] = useState(1.0);
   const [resizeMode, setResizeMode] = useState('contain');
   const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    console.log('>', params.id);
+    const itemHeight = screenHeight * 0.68 * 0.22;
+    console.log('总高', screenHeight * 0.68);
+    console.log('元素高', itemHeight);
+    console.log('布长', itemHeight * (params.index + 1));
+
+    scrollViewRef.current.scrollTo({
+      x: 0,
+      y: 0,
+      animated: true,
+    });
+    scrollViewRef.current.scrollTo({
+      x: 0,
+      y: itemHeight * (params.index + 1),
+      animated: true,
+    });
+  }, [params]);
   const onError = onError => {
     console.log('播放错误', onError);
   };
@@ -55,7 +73,7 @@ const MusicPlayer = ({route}) => {
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
         style={{
-          height: screenHeight * 0.65,
+          height: screenHeight * 0.68,
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
@@ -73,9 +91,7 @@ const MusicPlayer = ({route}) => {
             marginTop: 10,
             marginBottom: 10,
             borderRadius: 10,
-            // backgroundColor: 'black',
             flex: 1,
-            width: screenWidth * 0.9,
             padding: 10,
           }}>
           <View
@@ -89,8 +105,8 @@ const MusicPlayer = ({route}) => {
                 <View key={item.id}>
                   <Image
                     style={{
-                      width: screenWidth * 0.4,
-                      height: screenHeight * 0.2,
+                      width: screenWidth * 0.45,
+                      height: screenHeight * 0.22,
                       borderRadius: 10,
                       backgroundColor: 'red',
                     }}
