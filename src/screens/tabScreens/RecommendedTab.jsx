@@ -52,7 +52,7 @@ const RecommendedTab = () => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407111524/c4ab86595dad775587e119b595ca0fe7/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
+        'https://webfs.hw.kugou.com/202407111744/1b73277dce0a02cd9abae788da4f2327/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
       lyrics: [
         {time: '00:00', text: 'bôa - DUVET'},
         {time: '00:01', text: 'And you dont seem to understand'},
@@ -86,11 +86,11 @@ const RecommendedTab = () => {
       ],
     },
   ];
-  const NAV = () => {
-    navigation.navigate('MusicPlayer');
+  const NAV = item => {
+    navigation.navigate('MusicPlayer', item);
   };
-  const SongItem = ({title, artist, artwork}) => (
-    <TouchableOpacity onPress={NAV}>
+  const SongItem = ({item, title, artist, artwork}) => (
+    <TouchableOpacity onPress={() => NAV(item)}>
       <View
         style={{
           width: screenWidth,
@@ -148,6 +148,7 @@ const RecommendedTab = () => {
         data={musicList}
         renderItem={({item}) => (
           <SongItem
+            item={item}
             title={item.title}
             artist={item.artist}
             artwork={item.artwork}
