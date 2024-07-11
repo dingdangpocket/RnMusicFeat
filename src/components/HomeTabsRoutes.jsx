@@ -10,16 +10,16 @@ import {RecommendedIconActive, MineIconActive} from 'src/icons';
 const Tab = createBottomTabNavigator();
 const IconSet = {
   ACTIVE_AccountTab: (
-    <MineIconActive width="80%" height="80%" color="#ca5863" />
+    <MineIconActive width="70%" height="70%" color="#ca5863" />
   ),
   UNACTIVE_AccountTab: (
-    <MineIconActive width="80%" height="80%" color="#6b6a62" />
+    <MineIconActive width="70%" height="70%" color="#6b6a62" />
   ),
   ACTIVE_RecommendedTab: (
-    <RecommendedIconActive width="70%" height="70%" color="#ca5863" />
+    <RecommendedIconActive width="60%" height="60%" color="#ca5863" />
   ),
   UNACTIVE_RecommendedTab: (
-    <RecommendedIconActive width="70%" height="70%" color="#6b6a62" />
+    <RecommendedIconActive width="60%" height="60%" color="#6b6a62" />
   ),
 };
 const HomeTabsRoutes = () => {
@@ -46,7 +46,7 @@ const HomeTabsRoutes = () => {
       tabBarOptions={{
         activeTintColor: '#ca5863',
         inactiveTintColor: '#6b6a62',
-        labelStyle: {fontSize: 12},
+        labelStyle: {fontSize: 10},
         style: {height: 55},
       }}
       screenOptions={({route}) => ({
