@@ -39,6 +39,7 @@ const RoutesNav = () => {
               name={item.name}
               options={{
                 title: item.option.title,
+                headerShown: item.option.headerShown,
               }}
               component={item.component}
             />

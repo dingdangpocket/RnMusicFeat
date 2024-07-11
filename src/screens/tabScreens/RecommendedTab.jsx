@@ -15,9 +15,11 @@ import {
   FlatList,
   RefreshControl,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const RecommendedTab = () => {
+  const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState(false);
   const musicList = [
     {
@@ -48,7 +50,7 @@ const RecommendedTab = () => {
       album: 'Twilight',
       duration: 15, // 歌曲时长为60秒
       artwork:
-        'src="https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg"',
+        'https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg',
       trackUrl:
         'https://webfs.hw.kugou.com/202407111524/c4ab86595dad775587e119b595ca0fe7/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
       lyrics: [
@@ -61,7 +63,7 @@ const RecommendedTab = () => {
       ],
     },
     {
-      id: '3',
+      id: '2',
       title: '马思唯 - 登机',
       artist: '马思唯',
       album: 'Humble Swag Album',
@@ -84,52 +86,15 @@ const RecommendedTab = () => {
       ],
     },
   ];
-  const songs = [
-    {
-      id: '1',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '2', title: 'Song One', artist: 'Artist A'},
-    {
-      id: '3',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '4', title: 'Song One', artist: 'Artist A'},
-    {
-      id: '5',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '6', title: 'Song One', artist: 'Artist A'},
-    {
-      id: '7',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '8', title: 'Song One', artist: 'Artist A'},
-    {
-      id: '9',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '10', title: 'Song One', artist: 'Artist A'},
-    {
-      id: '11',
-      title: 'Song OneSong OneSong OneSong OneSong OneSong OneSong OneSong One',
-      artist: 'Artist A',
-    },
-    {id: '12', title: 'Song One', artist: 'Artist A'},
-    // ...更多歌曲数据
-  ];
-  const SongItem = ({title, artist}) => (
-    <TouchableOpacity>
+  const NAV = () => {
+    navigation.navigate('MusicPlayer');
+  };
+  const SongItem = ({title, artist, artwork}) => (
+    <TouchableOpacity onPress={NAV}>
       <View
         style={{
           width: screenWidth,
           height: 80,
-          // backgroundColor: 'red',
           justifyContent: 'space-evenly',
           alignItems: 'center',
           marginTop: 10,
@@ -139,14 +104,13 @@ const RecommendedTab = () => {
         <Image
           style={{width: screenWidth * 0.2, height: screenHeight * 0.1}}
           source={{
-            uri: 'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+            uri: artwork,
           }}
           resizeMode="cover"></Image>
         <View
           style={{
             width: screenWidth * 0.6,
             height: screenHeight * 0.1,
-            // backgroundColor: 'blue',
             justifyContent: 'center',
             padding: 10,
             justifyContent: 'space-around',
@@ -181,9 +145,13 @@ const RecommendedTab = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={songs}
+        data={musicList}
         renderItem={({item}) => (
-          <SongItem title={item.title} artist={item.artist} />
+          <SongItem
+            title={item.title}
+            artist={item.artist}
+            artwork={item.artwork}
+          />
         )}
         keyExtractor={item => item.id}
         refreshControl={
