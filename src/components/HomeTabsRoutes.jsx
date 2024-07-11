@@ -6,18 +6,21 @@ import AccountTab from 'src/screens/tabScreens/AccountTab';
 import {ContentContext} from 'src/context/ContextProvider';
 import {TouchableOpacity} from 'react-native';
 import {useContext} from 'react';
-import {
-  RecommendedIconActive,
-  RecommendedIconUnActive,
-  MineIconUnActive,
-  MineIconActive,
-} from 'src/icons';
+import {RecommendedIconActive, MineIconActive} from 'src/icons';
 const Tab = createBottomTabNavigator();
 const IconSet = {
-  activeAccountTab: <MineIconActive width="75%" height="75%" />,
-  unActiveAccountTab: <MineIconUnActive width="69%" height="69%" />,
-  activeRecommendedTab: <RecommendedIconActive width="72%" height="72%" />,
-  unActiveRecommendedTab: <RecommendedIconUnActive width="84%" height="84%" />,
+  ACTIVE_AccountTab: (
+    <MineIconActive width="80%" height="80%" color="#ca5863" />
+  ),
+  UNACTIVE_AccountTab: (
+    <MineIconActive width="80%" height="80%" color="#6b6a62" />
+  ),
+  ACTIVE_RecommendedTab: (
+    <RecommendedIconActive width="70%" height="70%" color="#ca5863" />
+  ),
+  UNACTIVE_RecommendedTab: (
+    <RecommendedIconActive width="70%" height="70%" color="#6b6a62" />
+  ),
 };
 const HomeTabsRoutes = () => {
   const {state, dispatch} = useContext(ContentContext);
@@ -39,20 +42,18 @@ const HomeTabsRoutes = () => {
     <Tab.Navigator
       initialRouteName="RecommendedTab"
       detachInactiveScreens={false}
-      lazy={false}
-      // sceneContainerStyle={{backgroundColor:"red"}}
+      lazy={true}
       tabBarOptions={{
-        activeTintColor: 'rgba(10,10,10,0.9)',
-        inactiveTintColor: 'rgba(10,10,10,0.5)',
+        activeTintColor: '#ca5863',
+        inactiveTintColor: '#6b6a62',
         labelStyle: {fontSize: 12},
         style: {height: 55},
-        // activeBackgroundColor: "rgba(10,10,0,0.9)",
       }}
       screenOptions={({route}) => ({
         tabBarIcon: ({focused}) => {
           return focused
-            ? IconSet['active' + route.name]
-            : IconSet['unActive' + route.name];
+            ? IconSet['ACTIVE_' + route.name]
+            : IconSet['UNACTIVE_' + route.name];
         },
         tabBarButton: props => (
           <TouchableOpacity activeOpacity={0.85} {...props} />
