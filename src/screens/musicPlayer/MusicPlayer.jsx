@@ -25,33 +25,7 @@ const MusicPlayer = ({route}) => {
   const [volume, setVolume] = useState(1.0);
   const [resizeMode, setResizeMode] = useState('contain');
   const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    const itemHeight = screenHeight * 0.68 * 0.22;
-    console.log('console.log(scrollViewRef);', scrollViewRef);
-    if (params.index == 0) {
-      console.log('RETURN');
-
-      scrollViewRef.current.scrollTo({
-        x: 0,
-        y: 0,
-        animated: true,
-      });
-    }
-    if (params.index + 1 == state.musicList.length) {
-      console.log('RETURN');
-    }
-    console.log('总高', screenHeight * 0.68);
-    console.log('元素高', itemHeight);
-    console.log('布长', itemHeight * (params.index + 1));
-    scrollViewRef.current.scrollTo({
-      x: 0,
-      y: itemHeight * params.index,
-      animated: true,
-    });
-  }, [params]);
-  useEffect(() => {
-    console.log('screenHeight', screenHeight);
-  }, []);
+  useEffect(() => {}, [params]);
   const onError = onError => {
     console.log('播放错误', onError);
   };
@@ -70,15 +44,7 @@ const MusicPlayer = ({route}) => {
   const onSeek = timeInSeconds => {
     videoRef.current.seek(timeInSeconds);
   };
-  const scrollToTop = () => {
-    scrollViewRef.current.scrollTo({x: 0, y: 100, animated: true});
-  };
 
-  const onScroll = event => {
-    const offsetY = event.nativeEvent.contentOffset.y;
-
-    // if()
-  };
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
@@ -89,54 +55,27 @@ const MusicPlayer = ({route}) => {
           alignItems: 'center',
           backgroundColor: 'gray',
         }}>
-        <ScrollView
-          onScroll={onScroll}
-          ref={scrollViewRef}
-          fadingEdgeLength={300}
-          decelerationRate={0.99}
-          contentOffset={{x: 0, y: 150}}
-          disableIntervalMomentum={true}
-          showsVerticalScrollIndicator={false}
-          style={{
-            marginTop: 10,
-            marginBottom: 10,
-            borderRadius: 10,
-            flex: 1,
-            padding: 10,
-          }}>
+        <View key={params.id}>
+          <Image
+            style={{
+              width: screenWidth * 0.45,
+              height: screenHeight * 0.22,
+              borderRadius: 10,
+              backgroundColor: 'red',
+            }}
+            source={{
+              uri: params.artwork,
+            }}
+            resizeMode="cover"></Image>
           <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
+              marginBottom: 15,
             }}>
-            {/* 居中容器 */}
-            {state.musicList.map(item => {
-              return (
-                <View key={item.id}>
-                  <Image
-                    style={{
-                      width: screenWidth * 0.45,
-                      height: screenHeight * 0.22,
-                      borderRadius: 10,
-                      backgroundColor: 'red',
-                    }}
-                    source={{
-                      uri: item.artwork,
-                    }}
-                    resizeMode="cover"></Image>
-                  <View
-                    style={{
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      marginBottom: 15,
-                    }}>
-                    <Text>{item.title}</Text>
-                  </View>
-                </View>
-              );
-            })}
+            <Text>{params.title}</Text>
           </View>
-        </ScrollView>
+        </View>
       </View>
       <View
         style={{
@@ -156,9 +95,6 @@ const MusicPlayer = ({route}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}></View>
-      <TouchableOpacity onPress={scrollToTop}>
-        <Text>999</Text>
-      </TouchableOpacity>
       <Video
         source={{
           uri: params.trackUrl,
