@@ -26,23 +26,32 @@ const MusicPlayer = ({route}) => {
   const [resizeMode, setResizeMode] = useState('contain');
   const [paused, setPaused] = useState(false);
   useEffect(() => {
-    console.log('>', params.id);
     const itemHeight = screenHeight * 0.68 * 0.22;
+    console.log('console.log(scrollViewRef);', scrollViewRef);
+    if (params.index == 0) {
+      console.log('RETURN');
+
+      scrollViewRef.current.scrollTo({
+        x: 0,
+        y: 0,
+        animated: true,
+      });
+    }
+    if (params.index + 1 == state.musicList.length) {
+      console.log('RETURN');
+    }
     console.log('总高', screenHeight * 0.68);
     console.log('元素高', itemHeight);
     console.log('布长', itemHeight * (params.index + 1));
-
     scrollViewRef.current.scrollTo({
       x: 0,
-      y: 0,
-      animated: true,
-    });
-    scrollViewRef.current.scrollTo({
-      x: 0,
-      y: itemHeight * (params.index + 1),
+      y: itemHeight * params.index,
       animated: true,
     });
   }, [params]);
+  useEffect(() => {
+    console.log('screenHeight', screenHeight);
+  }, []);
   const onError = onError => {
     console.log('播放错误', onError);
   };
@@ -62,12 +71,13 @@ const MusicPlayer = ({route}) => {
     videoRef.current.seek(timeInSeconds);
   };
   const scrollToTop = () => {
-    console.log(scrollViewRef);
     scrollViewRef.current.scrollTo({x: 0, y: 100, animated: true});
   };
+
   const onScroll = event => {
     const offsetY = event.nativeEvent.contentOffset.y;
-    console.log(offsetY);
+
+    // if()
   };
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -77,7 +87,7 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
-          //   backgroundColor: 'gray',
+          backgroundColor: 'gray',
         }}>
         <ScrollView
           onScroll={onScroll}

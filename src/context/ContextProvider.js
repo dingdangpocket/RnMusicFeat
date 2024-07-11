@@ -22,6 +22,11 @@ const reducer = (state, action) => {
         ...state,
         musicList: [...state.musicList, action.payload],
       };
+    case 'update':
+      return {
+        ...state,
+        musicList: [...action.payload],
+      };
 
     default:
       return state;
