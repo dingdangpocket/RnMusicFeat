@@ -3,9 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import RecommendedTab from 'src/screens/tabScreens/RecommendedTab';
 import AccountTab from 'src/screens/tabScreens/AccountTab';
-import {ContentContext} from 'src/context/ContextProvider';
 import {TouchableOpacity} from 'react-native';
-import {useContext} from 'react';
 import {RecommendedIconActive, MineIconActive} from 'src/icons';
 const Tab = createBottomTabNavigator();
 const IconSet = {
@@ -23,7 +21,6 @@ const IconSet = {
   ),
 };
 const HomeTabsRoutes = () => {
-  const {state, dispatch} = useContext(ContentContext);
   const HomeTabRoutesConfig = [
     {
       name: 'RecommendedTab',
