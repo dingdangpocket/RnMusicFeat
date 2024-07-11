@@ -11,7 +11,8 @@ import {
 import {ContentContext} from '../../context/ContextProvider';
 import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {log} from 'react-native-reanimated';
+import {Next, Last} from '../../icons/index';
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
@@ -63,10 +64,8 @@ const MusicPlayer = ({route}) => {
     } else {
       setCurrentSong(loactMusicList[index - 1]);
     }
-    console.log('l');
   };
   const right = () => {
-    console.log('r');
     let index = loactMusicList.indexOf(currentSong);
     if (index == loactMusicList.length - 1) {
       setCurrentSong(loactMusicList[0]);
@@ -74,7 +73,9 @@ const MusicPlayer = ({route}) => {
       setCurrentSong(loactMusicList[index + 1]);
     }
   };
-
+  const onChangeStatue = () => {
+    paused ? setPaused(false) : setPaused(true);
+  };
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
@@ -85,13 +86,6 @@ const MusicPlayer = ({route}) => {
           alignItems: 'center',
           backgroundColor: 'gray',
         }}>
-        <TouchableOpacity onPress={left}>
-          <Text>上一曲</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={right}>
-          <Text>下一曲</Text>
-        </TouchableOpacity>
-
         <View key={currentSong.id}>
           <Image
             style={{
@@ -131,7 +125,57 @@ const MusicPlayer = ({route}) => {
           backgroundColor: 'green',
           justifyContent: 'center',
           alignItems: 'center',
-        }}></View>
+          flexDirection: 'row',
+        }}>
+        <TouchableOpacity
+          onPress={left}
+          style={{
+            backgroundColor: 'white',
+            height: screenHeight * 0.07,
+            width: screenWidth * 0.2,
+            borderRadius: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Last width="30%" height="30%" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => onChangeStatue()}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              height: screenHeight * 0.07,
+              width: screenWidth * 0.3,
+              borderRadius: 30,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            {paused ? (
+              <Image
+                source={require(`../../public/start.png`)}
+                style={{width: 30, height: 30}}
+              />
+            ) : (
+              <Image
+                source={require(`../../public/pause.png`)}
+                style={{width: 30, height: 30}}
+              />
+            )}
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={right}
+          style={{
+            backgroundColor: 'white',
+            height: screenHeight * 0.07,
+            width: screenWidth * 0.2,
+            borderRadius: 30,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Next width="30%" height="30%" onPress={right} />
+        </TouchableOpacity>
+      </View>
       <Video
         source={{
           uri: currentSong.trackUrl,
