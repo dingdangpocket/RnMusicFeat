@@ -40,12 +40,12 @@ export const CommunityIconActive = ({width, height}) => {
     '<svg t="1665929825602" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="62020" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M512 512m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="black" p-id="62021"></path><path d="M512 0C229.248 0 0 229.248 0 512s229.248 512 512 512 512-229.248 512-512S794.752 0 512 0z m81.6 596.8L236.8 784l187.2-356.8L780.8 240 593.6 596.8z" fill="black" p-id="62022"></path><path d="M512 512m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="black" p-id="62023"></path><path d="M512 512m-57.6 0a57.6 57.6 0 1 0 115.2 0 57.6 57.6 0 1 0-115.2 0Z" fill="black" p-id="62024"></path></svg>';
   return <SvgXml xml={xml} width={width} height={height} />;
 };
-export const DiscoveryIconActive = ({width, height}) => {
+export const RecommendedIconActive = ({width, height}) => {
   const xml =
     '<svg t="1666005989949" class="icon" viewBox="0 0 1210 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33878" xmlns:xlink="http://www.w3.org/1999/xlink" width="236.328125" height="200"><path d="M186.181818 0h837.818182a186.181818 186.181818 0 0 1 186.181818 186.181818v651.636364a186.181818 186.181818 0 0 1-186.181818 186.181818H186.181818a186.181818 186.181818 0 0 1-186.181818-186.181818V186.181818a186.181818 186.181818 0 0 1 186.181818-186.181818z m572.183273 503.621818a9.309091 9.309091 0 0 1-1.861818 1.861818l-248.226909 186.181819a9.309091 9.309091 0 0 1-14.894546-7.447273v-372.363637a9.309091 9.309091 0 0 1 14.894546-7.447272l248.226909 186.181818a9.309091 9.309091 0 0 1 1.861818 13.032727z m-205.405091 247.621818l248.226909-186.181818a83.781818 83.781818 0 0 0 0-134.050909l-248.226909-186.181818A83.781818 83.781818 0 0 0 418.909091 311.854545v372.363637a83.781818 83.781818 0 0 0 134.050909 67.025454z" p-id="33879" fill="#2c2c2c"></path></svg>';
   return <SvgXml xml={xml} width={width} height={height} />;
 };
-export const DiscoveryIconUnActive = ({width, height}) => {
+export const RecommendedIconUnActive = ({width, height}) => {
   const xml =
     '<svg t="1666006199860" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="35787" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M817.1 830.9H249.9C182.1 830.9 127 775.8 127 708V211.8c0-67.8 55.1-123 122.9-123H817c67.8 0 122.9 55.2 122.9 123V708c0.1 67.8-55 122.9-122.8 122.9zM249.9 141.5c-38.7 0-70.3 31.5-70.3 70.3V708c0 38.7 31.5 70.3 70.3 70.3H817c38.7 0 70.3-31.5 70.3-70.3V211.8c0-38.8-31.5-70.3-70.3-70.3H249.9z" fill="#2c2c2c" p-id="35788"></path><path d="M664.5 502.3l-157.3 90.8c-32.7 18.9-73.5-4.7-73.5-42.5V368.9c0-37.7 40.9-61.3 73.5-42.5l157.3 90.8c32.7 19.1 32.7 66.3 0 85.1z" fill="#2c2c2c" p-id="35789"></path></svg>';
   return <SvgXml xml={xml} width={width} height={height} />;

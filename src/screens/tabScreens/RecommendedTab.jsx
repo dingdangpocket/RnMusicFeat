@@ -16,7 +16,7 @@ import Video from 'react-native-video';
 import CustomButton from 'src/components/CustomButton';
 import {Center} from 'src/commonStyle/commonStyle';
 
-const DiscoveryTab = () => {
+const RecommendedTab = () => {
   const refPlayer = useRef(null);
   const [rate] = useState(1.0);
   const [volume, setVolume] = useState(1.0);
@@ -261,4 +261,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
-export default DiscoveryTab;
+export default RecommendedTab;

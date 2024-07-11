@@ -1,65 +1,32 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeTab from 'src/screens/tabScreens/HomeTab';
-import CommunityTab from 'src/screens/tabScreens/CommunityTab';
-import DiscoveryTab from 'src/screens/tabScreens/DiscoveryTab';
+import RecommendedTab from 'src/screens/tabScreens/RecommendedTab';
 import AccountTab from 'src/screens/tabScreens/AccountTab';
-import EventTab from 'src/screens/tabScreens/EventTab';
 import {ContentContext} from 'src/context/ContextProvider';
 import {TouchableOpacity} from 'react-native';
 import {useContext} from 'react';
 import {
-  DiscoveryIconActive,
-  DiscoveryIconUnActive,
-  CommunityIconActive,
-  CommunityIconUnActive,
-  EventIconUnActive,
-  EventIconActive,
+  RecommendedIconActive,
+  RecommendedIconUnActive,
   MineIconUnActive,
   MineIconActive,
-  HomeIconActive,
-  HomeIconUnActive,
 } from 'src/icons';
 const Tab = createBottomTabNavigator();
 const IconSet = {
-  activeHomeTab: <HomeIconActive width="70%" height="70%" />,
-  unActiveHomeTab: <HomeIconUnActive width="82%" height="82%" />,
-  activeCommunityTab: <CommunityIconActive width="69%" height="69%" />,
-  unActiveCommunityTab: <CommunityIconUnActive width="65%" height="65%" />,
-  activeEventTab: <EventIconActive width="76%" height="76%" />,
-  unActiveEventTab: <EventIconUnActive width="75%" height="75%" />,
   activeAccountTab: <MineIconActive width="75%" height="75%" />,
   unActiveAccountTab: <MineIconUnActive width="69%" height="69%" />,
-  activeDiscoveryTab: <DiscoveryIconActive width="72%" height="72%" />,
-  unActiveDiscoveryTab: <DiscoveryIconUnActive width="84%" height="84%" />,
+  activeRecommendedTab: <RecommendedIconActive width="72%" height="72%" />,
+  unActiveRecommendedTab: <RecommendedIconUnActive width="84%" height="84%" />,
 };
 const HomeTabsRoutes = () => {
-  const {state} = useContext(ContentContext);
+  const {state, dispatch} = useContext(ContentContext);
   const HomeTabRoutesConfig = [
     {
-      name: 'HomeTab',
-      component: HomeTab,
-      option: {title: '首页'},
+      name: 'RecommendedTab',
+      component: RecommendedTab,
+      option: {title: '推荐'},
       tabBarBadge: null,
-    },
-    {
-      name: 'CommunityTab',
-      component: CommunityTab,
-      option: {title: '社区'},
-      tabBarBadge: state.communityTabBarBadge,
-    },
-    {
-      name: 'DiscoveryTab',
-      component: DiscoveryTab,
-      option: {title: '探索'},
-      tabBarBadge: null,
-    },
-    {
-      name: 'EventTab',
-      component: EventTab,
-      option: {title: '活动'},
-      tabBarBadge: state.eventTabBarBadge,
     },
     {
       name: 'AccountTab',
@@ -68,10 +35,9 @@ const HomeTabsRoutes = () => {
       tabBarBadge: null,
     },
   ];
-  // const {dispatch} = useContext(ContentContext);
   return (
     <Tab.Navigator
-      initialRouteName="DiscoveryTab"
+      initialRouteName="RecommendedTab"
       detachInactiveScreens={false}
       lazy={false}
       // sceneContainerStyle={{backgroundColor:"red"}}
