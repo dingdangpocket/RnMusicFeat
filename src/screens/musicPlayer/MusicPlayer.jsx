@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useRef, useState, useContext, useEffect} from 'react';
+import React, {useRef, useState, useContext, useEffect, Button} from 'react';
 import {
   View,
   Text,
@@ -17,7 +17,7 @@ const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
   const scrollViewRef = useRef(null);
 
-  const {params} = route;
+  const {item, musicList} = route.params;
   const {state, dispatch} = useContext(ContentContext);
   //   console.log(params);
   const refPlayer = useRef(null);
@@ -25,7 +25,19 @@ const MusicPlayer = ({route}) => {
   const [volume, setVolume] = useState(1.0);
   const [resizeMode, setResizeMode] = useState('contain');
   const [paused, setPaused] = useState(false);
-  useEffect(() => {}, [params]);
+  const [currentState, setCurrentState] = useState(item.index);
+  const [currentSong, setCurrentSong] = useState(musicList[item.index]);
+  const [loactMusicList, setLoactMusicList] = useState(musicList);
+  useEffect(() => {
+    console.log('item', item);
+    console.log('musicList', musicList);
+    console.log(musicList[item.index]);
+    // setCurrentState(item.index);
+    // setCurrentSong(musicList[item.index]);
+    // setLoactMusicList(musicList);
+    console.log('?', currentSong);
+  }, [route, musicList, currentSong, currentState]);
+
   const onError = onError => {
     console.log('播放错误', onError);
   };
@@ -44,6 +56,24 @@ const MusicPlayer = ({route}) => {
   const onSeek = timeInSeconds => {
     videoRef.current.seek(timeInSeconds);
   };
+  const left = () => {
+    let index = loactMusicList.indexOf(currentSong);
+    if (index == 0) {
+      setCurrentSong(loactMusicList[loactMusicList.length - 1]);
+    } else {
+      setCurrentSong(loactMusicList[index - 1]);
+    }
+    console.log('l');
+  };
+  const right = () => {
+    console.log('r');
+    let index = loactMusicList.indexOf(currentSong);
+    if (index == loactMusicList.length - 1) {
+      setCurrentSong(loactMusicList[0]);
+    } else {
+      setCurrentSong(loactMusicList[index + 1]);
+    }
+  };
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -55,7 +85,14 @@ const MusicPlayer = ({route}) => {
           alignItems: 'center',
           backgroundColor: 'gray',
         }}>
-        <View key={params.id}>
+        <TouchableOpacity onPress={left}>
+          <Text>上一曲</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={right}>
+          <Text>下一曲</Text>
+        </TouchableOpacity>
+
+        <View key={currentSong.id}>
           <Image
             style={{
               width: screenWidth * 0.45,
@@ -64,7 +101,7 @@ const MusicPlayer = ({route}) => {
               backgroundColor: 'red',
             }}
             source={{
-              uri: params.artwork,
+              uri: currentSong.artwork,
             }}
             resizeMode="cover"></Image>
           <View
@@ -73,7 +110,7 @@ const MusicPlayer = ({route}) => {
               alignItems: 'center',
               marginBottom: 15,
             }}>
-            <Text>{params.title}</Text>
+            <Text>{currentSong.title}</Text>
           </View>
         </View>
       </View>
@@ -97,14 +134,14 @@ const MusicPlayer = ({route}) => {
         }}></View>
       <Video
         source={{
-          uri: params.trackUrl,
+          uri: currentSong.trackUrl,
         }}
         ref={refPlayer} //实例;
         style={styles.container} //样式;
         rate={rate} //倍率;
         paused={paused} // 控制暂停/播放，0 代表暂停paused, 1代表播放normal;
         volume={volume} // 0静音, 1正常，其他数字表示放大倍数;
-        muted={true} // true静音，默认false;
+        muted={false} // true静音，默认false;
         onLoad={onLoad} // 加载完毕时回调;
         onLoadStart={loadStart} // 视频开始加载回调;
         onProgress={onProgress} // 进度实时回调;
