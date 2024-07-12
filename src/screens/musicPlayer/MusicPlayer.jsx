@@ -9,7 +9,6 @@ import {
   Animated,
   PanResponder,
 } from 'react-native';
-import {ContentContext} from '../../context/ContextProvider';
 import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Next, Last} from '../../icons/index';
@@ -19,7 +18,6 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
   const {item, musicList} = route.params;
-  const {state, dispatch} = useContext(ContentContext);
   const refPlayer = useRef(null);
   const [rate] = useState(1.0);
   const [volume, setVolume] = useState(1.0);

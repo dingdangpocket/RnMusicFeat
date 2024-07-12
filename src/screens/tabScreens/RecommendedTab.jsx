@@ -36,7 +36,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111524/c4ab86595dad775587e119b595ca0fe7/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Dehors Album'},
         {time: '00:14', text: 'La fanfare frémit au carrefour de ta forme'},
         {time: '00:25', text: 'Martellant sa poésie diforme'},
         {
@@ -78,9 +78,9 @@ const RecommendedTab = () => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -103,7 +103,7 @@ const RecommendedTab = () => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20230610/20230610061601506971.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407111524/c4ab86595dad775587e119b595ca0fe7/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
+        'https://webfs.hw.kugou.com/202407121627/fa554b3dce7a77c146b476b4e7a5c1ce/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
       lyrics: [
         {time: '00:00', text: 'Jordann-Dehors'},
         {time: '00:13', text: 'La fanfare frémit au carrefour de ta forme'},
@@ -126,7 +126,7 @@ const RecommendedTab = () => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407111744/1b73277dce0a02cd9abae788da4f2327/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
+        'https://webfs.hw.kugou.com/202407121627/0977cf8eccd46656b5910566816d132f/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
       lyrics: [
         {time: '00:00', text: 'bôa - DUVET'},
         {time: '00:01', text: 'And you dont seem to understand'},
@@ -149,7 +149,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -174,7 +174,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -199,7 +199,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -224,7 +224,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -249,7 +249,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -274,7 +274,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -299,7 +299,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
@@ -324,7 +324,7 @@ const RecommendedTab = () => {
       trackUrl:
         'https://webfs.hw.kugou.com/202407111549/fef169bdcce2622bdc4d6b6c6aaab43b/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
       lyrics: [
-        {time: '00:00', text: 'Jordann-Dehors'},
+        {time: '00:00', text: 'Humble Swag Album'},
         {time: '00:09', text: '中文说唱除了我之外'},
         {time: '00:10', text: '都要被区别对待'},
         {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
