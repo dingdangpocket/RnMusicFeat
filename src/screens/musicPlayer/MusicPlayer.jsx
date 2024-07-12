@@ -179,7 +179,7 @@ const MusicPlayer = ({route}) => {
             width: screenWidth * 0.83,
             height: screenHeight * 0.03,
             flexDirection: 'row',
-            // backgroundColor: 'green',
+            //backgroundColor: 'green',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
