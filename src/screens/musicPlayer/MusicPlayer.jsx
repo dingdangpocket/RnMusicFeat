@@ -13,7 +13,6 @@ import Video from 'react-native-video';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {Next, Last} from '../../icons/index';
 import {Svg, Line, Circle} from 'react-native-svg';
-
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
@@ -349,7 +348,7 @@ const MusicPlayer = ({route}) => {
                     width: screenWidth * 0.72,
                     height: screenHeight * 0.35,
                     borderRadius: 10,
-                    backgroundColor: 'red',
+                    // backgroundColor: 'red',
                     marginBottom: 15,
                   }}
                   source={{
