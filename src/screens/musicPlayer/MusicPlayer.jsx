@@ -7,6 +7,8 @@ import {
   Dimensions,
   Image,
   ScrollView,
+  Animated,
+  Easing,
 } from 'react-native';
 import {ContentContext} from '../../context/ContextProvider';
 import Video from 'react-native-video';
@@ -31,7 +33,7 @@ const MusicPlayer = ({route}) => {
   const [loactMusicList, setLoactMusicList] = useState(musicList);
   const [currentTime, setCurrentTime] = useState();
   const [currentLyrics, setCurrentLyrics] = useState('');
-
+  const [durationTime, setDurationTime] = useState();
   useEffect(() => {
     console.log('item', item);
     console.log('musicList', musicList);
@@ -45,8 +47,31 @@ const MusicPlayer = ({route}) => {
   const onError = onError => {
     console.log('播放错误', onError);
   };
+  const formatTimeSt = seconds => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    // 将分钟和秒数转换为两位字符串
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedMinutes}:${formattedSeconds}`;
+  };
   const onLoad = onLoad => {
-    console.log('加载完成', onLoad);
+    if (onLoad) {
+      console.log('加载完成', onLoad.duration, onLoad.duration * 1000);
+
+      // const res = onLoad.duration * 1000;
+      setDurationTime(onLoad.duration);
+      // console.log('DurationTime', durationTime);
+    } else {
+      console.log('ENPTY');
+    }
+    Animated.timing(progress, {
+      toValue: 30,
+      duration: onLoad.duration * 1000,
+      useNativeDriver: false,
+    }).start();
   };
   const loadStart = loadStart => {
     console.log('开始加载', loadStart);
@@ -93,18 +118,26 @@ const MusicPlayer = ({route}) => {
       '播放进度',
       // onProgress,
       onProgress.currentTime,
-      formatTime(onProgress.currentTime)
+      formatTimeSt(onProgress.currentTime)
     );
-    const res = formatTime(onProgress.currentTime);
+    const res = formatTimeSt(onProgress.currentTime);
     setCurrentTime(res);
+    console.log('CurrentTime', currentTime);
     currentSong.lyrics.forEach(item => {
-      console.log(item);
-      if (item.time == res) {
+      // console.log('?', item.time, res);
+      if (String(item.time) == String(res)) {
         setCurrentLyrics(item.text);
         console.log('歌词', item.text);
       }
     });
   };
+
+  const progress = new Animated.Value(0);
+  const widthInterpolate = progress.interpolate({
+    inputRange: [0, 30],
+    outputRange: [0, screenWidth * 0.6],
+  });
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
@@ -145,7 +178,11 @@ const MusicPlayer = ({route}) => {
           backgroundColor: 'rgb(220,220,220)',
           justifyContent: 'center',
           alignItems: 'center',
-        }}></View>
+        }}>
+        <Text>{currentTime}</Text>
+        <Text>{formatTimeSt(durationTime)}</Text>
+      </View>
+
       <View
         style={{
           width: screenWidth * 0.9,
@@ -242,6 +279,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'orange',
+  },
+  box: {
+    height: 15,
+    width: 0,
+    backgroundColor: 'blue',
   },
 });
 export default MusicPlayer;
