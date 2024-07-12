@@ -140,15 +140,15 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'gray',
+          // backgroundColor: 'gray',
         }}>
         <View key={currentSong.id}>
           <Image
             style={{
-              width: screenWidth * 0.45,
-              height: screenHeight * 0.22,
+              width: screenWidth * 0.7,
+              height: screenHeight * 0.35,
               borderRadius: 10,
-              backgroundColor: 'red',
+              // backgroundColor: 'red',
               marginBottom: 15,
             }}
             source={{
@@ -229,10 +229,11 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           height: screenHeight * 0.06,
           borderRadius: 10,
-          backgroundColor: 'rgb(180,180,180)',
+          backgroundColor: 'rgba(180,180,180,0.2)',
           justifyContent: 'center',
           alignItems: 'center',
           marginTop: 5,
+          marginBottom: 10,
         }}>
         <Text>{currentLyrics}</Text>
       </View>
