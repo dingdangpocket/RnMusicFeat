@@ -178,69 +178,62 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           height: screenHeight * 0.12,
           borderRadius: 10,
-          backgroundColor: 'rgb(220,220,220)',
+          backgroundColor: 'rgb(10,80,80)',
           justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 10,
         }}>
-        {/* <Text>{formatTimeSt(currentTime)}</Text>
-        <Text>{formatTimeSt(durationTime)}</Text> */}
-        <Svg width={screenWidth * 0.9} height={screenHeight * 0.12}>
-          <Line
-            x1="10"
-            y1="10"
-            x2={screenWidth * 0.88}
-            y2="10"
-            stroke="rgb(50,50,50)"
-            strokeWidth="25"
-          />
-          <Line
-            x1="10"
-            y1="10"
-            x2={String(screenWidth * 0.88)}
-            y2="10"
-            stroke="red"
-            strokeWidth="10"
-            strokeDasharray={String(screenWidth * 0.88)}
-            strokeDashoffset={String(StrokeDashoffset)}
-          />
-          {/* <Line
-            x1="30"
-            y1="30"
-            x2="170"
-            y2="170"
-            stroke="green"
-            strokeWidth="3"
-            markerEnd="url(#arrow)"
-          /> */}
-          {/* <Path
-            d="M40,40 Q80,100 160,40"
-            stroke="purple"
-            strokeWidth="2"
-            fill="none"
-            markerEnd="url(#arrow)"
-            markerMid="url(#arrow)"
-          /> */}
-          {/* <Marker
-            id="arrow"
-            markerWidth="10"
-            markerHeight="10"
-            refX="10"
-            refY="5"
-            markerUnits="strokeWidth"
-            orient="auto">
-            <Path d="M0,0 L0,10 L10,5 z" fill="black" />
-          </Marker> */}
-        </Svg>
+        <View
+          style={{
+            width: screenWidth * 0.83,
+            height: screenHeight * 0.03,
+            flexDirection: 'row',
+            // backgroundColor: 'green',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Text>{formatTimeSt(currentTime)}</Text>
+          <Text>{formatTimeSt(durationTime)}</Text>
+        </View>
+        <View
+          style={{
+            width: screenWidth * 0.8,
+            height: screenHeight * 0.03,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Svg width={screenWidth * 0.9} height={screenHeight * 0.12}>
+            <Line
+              x1="10"
+              y1="10"
+              x2={screenWidth * 0.88}
+              y2="10"
+              stroke="rgb(50,50,50)"
+              strokeWidth="5"
+            />
+            <Line
+              x1="10"
+              y1="10"
+              x2={String(screenWidth * 0.88)}
+              y2="10"
+              stroke="red"
+              strokeWidth="3"
+              strokeDasharray={String(screenWidth * 0.88)}
+              strokeDashoffset={String(StrokeDashoffset)}
+            />
+          </Svg>
+        </View>
       </View>
 
       <View
         style={{
           width: screenWidth * 0.9,
-          height: screenHeight * 0.12,
+          height: screenHeight * 0.06,
           borderRadius: 10,
           backgroundColor: 'rgb(180,180,180)',
           justifyContent: 'center',
           alignItems: 'center',
+          marginTop: 5,
         }}>
         <Text>{currentLyrics}</Text>
       </View>
