@@ -124,12 +124,10 @@ const MusicPlayer = ({route}) => {
       right();
     }
     setCurrentTime(onProgress.currentTime);
-    // console.log('CurrentTime', currentTime);
+
     currentSong.lyrics.forEach(item => {
-      // console.log('?', item.time, res);
       if (String(item.time) == String(formatTimeSt(onProgress.currentTime))) {
         setCurrentLyrics(item.text);
-        // console.log('歌词', item.text);
       }
     });
   };
@@ -142,78 +140,28 @@ const MusicPlayer = ({route}) => {
 
   const StrokeDashoffset =
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
-  //next偏移值=固定总长-（当前偏移比例*固定总长）
+  //进度偏移值=固定总长-（当前偏移比例*固定总长）
 
-  // const panGestureRef = React.useRef(null);
-  // const onPanGestureEvent = React.useCallback(event => {
-  //   const {translationX, translationY} = event.nativeEvent;
-  //   console.log("??",translationX);
-  //   setPointX(translationX); // 更新圆点的x坐标
-  // }, []);
-  const [boxStyle, setBoxStyle] = useState({
-    width: 30,
-    height: 30,
-    backgroundColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 75,
-    borderStyle: 'solid',
-    borderColor: 'purple',
-  });
-  const [borderStyle, setBorderStyle] = useState({
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 75,
-    borderStyle: 'solid',
-    borderColor: 'purple',
-    borderTopWidth: 5,
-    borderBottomWidth: 5,
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-  });
-  const commonBorderStyle = {
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 75,
-    borderStyle: 'solid',
-    borderTopWidth: 5,
-    borderBottomWidth: 5,
-    borderLeftWidth: 5,
-    borderRightWidth: 5,
-  };
-  const commonBoxStyle = {
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 75,
-  };
-  const [previousPan, setPreviousPan] = useState({x: 0, y: 0});
-  const [pan] = useState(new Animated.ValueXY());
-  const scaleValue = useRef(new Animated.Value(1)).current;
   useEffect(() => {
     setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 5));
   }, [StrokeDashoffset]);
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderGrant: (event, gestureState) => {
-      setPointX(event.nativeEvent.locationX - gestureState.moveX);
-      // 用户开始拖拽时，记录圆点的初始位置
-    },
+    onPanResponderGrant: (event, gestureState) => {},
     onPanResponderMove: (event, gestureState) => {
       setPaused(true);
-      setPointX(event.nativeEvent.locationX - gestureState.moveX);
-      // 用户拖拽时，更新圆点的x坐标
+      const newX = event.nativeEvent.locationX - gestureState.moveX;
+      setPointX(newX);
       if (gestureState.moveX > screenWidth * 0.88) {
         right();
+      }
+      if (gestureState.moveX < 15) {
+        left();
       } else {
         const rate = gestureState.moveX / (screenWidth * 0.88);
-        //拖拽比例;
         const seekTime = durationTime * rate;
+        setCurrentTime(seekTime);
+        //注意！keyCode
         onSeek(seekTime);
       }
     },
@@ -284,6 +232,7 @@ const MusicPlayer = ({route}) => {
             height: screenHeight * 0.03,
             justifyContent: 'space-between',
             alignItems: 'center',
+            marginTop: 10,
           }}>
           <Svg width={screenWidth * 0.9} height={screenHeight * 0.12}>
             <Line
@@ -308,9 +257,10 @@ const MusicPlayer = ({route}) => {
               {...panResponder.panHandlers}
               cx={pointX}
               cy="10"
-              r="15"
+              r="10"
               fill="rgb(255,255,255)"
             />
+            <Animated.View {...panResponder.panHandlers}></Animated.View>
           </Svg>
         </View>
       </View>
