@@ -102,7 +102,7 @@ const MusicPlayer = ({route}) => {
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
   //进度偏移值=固定总长-（当前偏移比例*固定总长）
   useEffect(() => {
-    setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 5));
+    setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 6));
   }, [StrokeDashoffset]);
 
   const panResponder = PanResponder.create({
@@ -192,7 +192,7 @@ const MusicPlayer = ({route}) => {
             height: screenHeight * 0.03,
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginTop: 10,
+            marginTop: 15,
           }}>
           <Svg width={screenWidth * 0.9} height={screenHeight * 0.12}>
             <Line
@@ -200,7 +200,7 @@ const MusicPlayer = ({route}) => {
               y1="10"
               x2={screenWidth * 0.88}
               y2="10"
-              stroke="rgb(180,180,180)"
+              stroke="rgb(220,220,220)"
               strokeWidth="5"
             />
             <Line
@@ -208,7 +208,7 @@ const MusicPlayer = ({route}) => {
               y1="10"
               x2={String(screenWidth * 0.88)}
               y2="10"
-              stroke="rgb(240,240,240)"
+              stroke="rgb(175,175,175)"
               strokeWidth="3"
               strokeDasharray={String(screenWidth * 0.88)}
               strokeDashoffset={String(StrokeDashoffset)}
@@ -218,9 +218,8 @@ const MusicPlayer = ({route}) => {
               cx={pointX}
               cy="10"
               r="10"
-              fill="rgb(220,220,220)"
+              fill="rgb(210,210,210)"
             />
-            <Animated.View {...panResponder.panHandlers}></Animated.View>
           </Svg>
         </View>
       </View>

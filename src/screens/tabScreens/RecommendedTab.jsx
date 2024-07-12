@@ -44,6 +44,7 @@ const RecommendedTab = () => {
           text: 'Cest leau de vie dans la sève la conscience qui sachève',
         },
         {time: '00:46', text: 'Témoin de ta vision auditeur de ta prison'},
+        {time: '00:49', text: '....'},
       ],
     },
     {
@@ -64,6 +65,7 @@ const RecommendedTab = () => {
         {time: '00:11', text: 'And all the fears you hold so dear'},
         {time: '00:16', text: 'Will turn to whisper in your ear'},
         {time: '00:21', text: 'And you know what they say might hurt you'},
+        {time: '00:24', text: '....'},
       ],
     },
     {
@@ -88,6 +90,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -110,6 +113,7 @@ const RecommendedTab = () => {
           text: 'Cest leau de vie dans la sève la conscience qui sachève',
         },
         {time: '00:46', text: 'Témoin de ta vision auditeur de ta prison'},
+        {time: '00:47', text: '....'},
       ],
     },
     {
@@ -130,6 +134,7 @@ const RecommendedTab = () => {
         {time: '00:11', text: 'And all the fears you hold so dear'},
         {time: '00:16', text: 'Will turn to whisper in your ear'},
         {time: '00:21', text: 'And you know what they say might hurt you'},
+        {time: '00:24', text: '....'},
       ],
     },
     {
@@ -154,6 +159,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -178,6 +184,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -202,6 +209,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -226,6 +234,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -250,6 +259,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -274,6 +284,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -298,6 +309,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
     {
@@ -322,6 +334,7 @@ const RecommendedTab = () => {
         {time: '00:22', text: '你们要记得'},
         {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
         {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
       ],
     },
   ];
