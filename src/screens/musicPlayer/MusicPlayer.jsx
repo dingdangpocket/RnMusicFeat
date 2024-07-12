@@ -120,12 +120,11 @@ const MusicPlayer = ({route}) => {
       onProgress.currentTime,
       formatTimeSt(onProgress.currentTime)
     );
-    const res = formatTimeSt(onProgress.currentTime);
-    setCurrentTime(res);
+    setCurrentTime(onProgress.currentTime);
     console.log('CurrentTime', currentTime);
     currentSong.lyrics.forEach(item => {
       // console.log('?', item.time, res);
-      if (String(item.time) == String(res)) {
+      if (String(item.time) == String(formatTimeSt(onProgress.currentTime))) {
         setCurrentLyrics(item.text);
         console.log('歌词', item.text);
       }
@@ -179,7 +178,7 @@ const MusicPlayer = ({route}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text>{currentTime}</Text>
+        <Text>{formatTimeSt(currentTime)}</Text>
         <Text>{formatTimeSt(durationTime)}</Text>
       </View>
 
