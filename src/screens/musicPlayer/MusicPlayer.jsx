@@ -40,11 +40,7 @@ const MusicPlayer = ({route}) => {
   };
   const onLoad = onLoad => {
     if (onLoad) {
-      console.log('加载完成', onLoad.duration, onLoad.duration * 1000);
-
-      // const res = onLoad.duration * 1000;
       setDurationTime(onLoad.duration);
-      // console.log('DurationTime', durationTime);
     } else {
       console.log('ENPTY');
     }
@@ -55,10 +51,10 @@ const MusicPlayer = ({route}) => {
     }).start();
   };
   const loadStart = loadStart => {
-    console.log('开始加载', loadStart);
+    // console.log('开始加载', loadStart);
   };
   const onEnd = onEnd => {
-    console.log('加载结束', onEnd);
+    // console.log('加载结束', onEnd);
   };
   const onSeek = timeInSeconds => {
     refPlayer.current.seek(timeInSeconds);
@@ -99,9 +95,6 @@ const MusicPlayer = ({route}) => {
   const StrokeDashoffset =
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
   //进度偏移值=固定总长-（当前偏移比例*固定总长）
-  useEffect(() => {
-    setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 6));
-  }, [StrokeDashoffset]);
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -129,6 +122,9 @@ const MusicPlayer = ({route}) => {
     },
   });
   const [pointX, setPointX] = useState();
+  useEffect(() => {
+    setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 6));
+  }, [StrokeDashoffset]);
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -138,7 +134,7 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
-          // backgroundColor: 'gray',
+          backgroundColor: 'gray',
         }}>
         <View key={currentSong.id}>
           <Image
