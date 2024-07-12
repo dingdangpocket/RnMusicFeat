@@ -9,12 +9,15 @@ import {
   ScrollView,
   Animated,
   Easing,
+  PanResponder,
 } from 'react-native';
 import {ContentContext} from '../../context/ContextProvider';
 import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Next, Last} from '../../icons/index';
-import {Svg, Line, Path, Marker} from 'react-native-svg';
+import {Svg, Line, Path, Circle, Marker} from 'react-native-svg';
+import {log} from 'react-native-reanimated';
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
@@ -81,7 +84,8 @@ const MusicPlayer = ({route}) => {
     console.log('加载结束', onEnd);
   };
   const onSeek = timeInSeconds => {
-    videoRef.current.seek(timeInSeconds);
+    console.log('durationTime', timeInSeconds);
+    refPlayer.current.seek(timeInSeconds);
   };
   const left = () => {
     let index = loactMusicList.indexOf(currentSong);
@@ -114,19 +118,18 @@ const MusicPlayer = ({route}) => {
   };
 
   const onProgress = onProgress => {
-    console.log(
-      '播放进度',
-      // onProgress,
-      onProgress.currentTime,
-      formatTimeSt(onProgress.currentTime)
-    );
+    if (
+      String(formatTimeSt(onProgress.currentTime)) == formatTimeSt(durationTime)
+    ) {
+      right();
+    }
     setCurrentTime(onProgress.currentTime);
-    console.log('CurrentTime', currentTime);
+    // console.log('CurrentTime', currentTime);
     currentSong.lyrics.forEach(item => {
       // console.log('?', item.time, res);
       if (String(item.time) == String(formatTimeSt(onProgress.currentTime))) {
         setCurrentLyrics(item.text);
-        console.log('歌词', item.text);
+        // console.log('歌词', item.text);
       }
     });
   };
@@ -140,6 +143,86 @@ const MusicPlayer = ({route}) => {
   const StrokeDashoffset =
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
   //next偏移值=固定总长-（当前偏移比例*固定总长）
+
+  // const panGestureRef = React.useRef(null);
+  // const onPanGestureEvent = React.useCallback(event => {
+  //   const {translationX, translationY} = event.nativeEvent;
+  //   console.log("??",translationX);
+  //   setPointX(translationX); // 更新圆点的x坐标
+  // }, []);
+  const [boxStyle, setBoxStyle] = useState({
+    width: 30,
+    height: 30,
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 75,
+    borderStyle: 'solid',
+    borderColor: 'purple',
+  });
+  const [borderStyle, setBorderStyle] = useState({
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 75,
+    borderStyle: 'solid',
+    borderColor: 'purple',
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+  });
+  const commonBorderStyle = {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 75,
+    borderStyle: 'solid',
+    borderTopWidth: 5,
+    borderBottomWidth: 5,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+  };
+  const commonBoxStyle = {
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 75,
+  };
+  const [previousPan, setPreviousPan] = useState({x: 0, y: 0});
+  const [pan] = useState(new Animated.ValueXY());
+  const scaleValue = useRef(new Animated.Value(1)).current;
+  useEffect(() => {
+    setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 5));
+  }, [StrokeDashoffset]);
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderGrant: (event, gestureState) => {
+      setPointX(event.nativeEvent.locationX - gestureState.moveX);
+      // 用户开始拖拽时，记录圆点的初始位置
+    },
+    onPanResponderMove: (event, gestureState) => {
+      setPaused(true);
+      setPointX(event.nativeEvent.locationX - gestureState.moveX);
+      // 用户拖拽时，更新圆点的x坐标
+      if (gestureState.moveX > screenWidth * 0.88) {
+        right();
+      } else {
+        const rate = gestureState.moveX / (screenWidth * 0.88);
+        //拖拽比例;
+        const seekTime = durationTime * rate;
+        onSeek(seekTime);
+      }
+    },
+    onPanResponderRelease: (event, gestureState) => {
+      setPointX(event.nativeEvent.locationX - gestureState.moveX);
+      setPaused(false);
+    },
+  });
+  const [pointX, setPointX] = useState();
 
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -220,6 +303,13 @@ const MusicPlayer = ({route}) => {
               strokeWidth="3"
               strokeDasharray={String(screenWidth * 0.88)}
               strokeDashoffset={String(StrokeDashoffset)}
+            />
+            <Circle
+              {...panResponder.panHandlers}
+              cx={pointX}
+              cy="10"
+              r="15"
+              fill="rgb(255,255,255)"
             />
           </Svg>
         </View>
