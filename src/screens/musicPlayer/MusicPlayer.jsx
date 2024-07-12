@@ -51,7 +51,7 @@ const MusicPlayer = ({route}) => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407111744/1b73277dce0a02cd9abae788da4f2327/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
+        'https://webfs.hw.kugou.com/202407122244/cac2cfd2bab4b6900505bfa6e8d22d46/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
       lyrics: [
         {time: '00:00', text: 'bôa - DUVET'},
         {time: '00:01', text: 'And you dont seem to understand'},
@@ -90,252 +90,57 @@ const MusicPlayer = ({route}) => {
     {
       id: '3',
       index: 3,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
+      title: '邓紫棋',
+      artist: '邓紫棋',
+      album: '摩天动物园',
       duration: 15, // 歌曲时长为60秒
       artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+        'https://imgessl.kugou.com/stdmusic/20191226/20191226204018306531.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
+        'https://webfs.hw.kugou.com/202407122239/370fa99e2ce3ed9a08792e36ed7abfa3/v2/0ec0dfe7a4090b3c5c2c1831d7f3ed51/part/0/960127/G185/M08/17/0B/clip_-Q0DAF4WEP6AbxIRADmMOR-Oo88467.mp3',
+      lyrics: [{time: '00:00', text: '...'}],
     },
     {
       id: '4',
       index: 4,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
+      title: 'OneRepublic - Hurt',
+      artist: 'OneRepublic - Hurt',
+      album: 'OneRepublic - Hurt',
       duration: 15, // 歌曲时长为60秒
       artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+        'https://imgessl.kugou.com/stdmusic/20240706/20240706062701335875.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+        'https://webfs.hw.kugou.com/202407122235/1ef7f9c4ca70d164e4a357b4435e0739/KGTX/CLTX001/7c6f189451f13f22c7f943f3fb491d09.mp3',
       lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:00', text: '....'},
         {time: '00:28', text: '....'},
       ],
     },
     {
       id: '5',
       index: 5,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
+      title: 'Cigarettes After',
+      artist: 'Cigarettes After',
       album: 'Humble Swag Album',
       duration: 15, // 歌曲时长为60秒
       artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+        'https://imgessl.kugou.com/stdmusic/20240708/20240708091701640621.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
+        'https://webfs.hw.kugou.com/202407122232/463dfe8426c315e57bdd39e9bb8d2939/KGTX/CLTX001/b25f57f42ee067cef0f5cf9a5215d1cf.mp3',
+      lyrics: [{time: '00:00', text: 'Cigarettes After'}],
     },
     {
       id: '6',
       index: 6,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
+      title: '周杰伦',
+      artist: '周杰伦',
       album: 'Humble Swag Album',
       duration: 15, // 歌曲时长为60秒
       artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+        'https://imgessl.kugou.com/stdmusic/20230920/20230920142503632013.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '7',
-      index: 7,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '8',
-      index: 8,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '9',
-      index: 9,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '10',
-      index: 10,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '11',
-      index: 11,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
-    },
-    {
-      id: '12',
-      index: 12,
-      title: '马思唯 - 登机',
-      artist: '马思唯',
-      album: 'Humble Swag Album',
-      duration: 15, // 歌曲时长为60秒
-      artwork:
-        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
-      trackUrl:
-        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
-      lyrics: [
-        {time: '00:00', text: 'Humble Swag Album'},
-        {time: '00:09', text: '中文说唱除了我之外'},
-        {time: '00:10', text: '都要被区别对待'},
-        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
-        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
-        {time: '00:17', text: '我们的最爱是sipping Henny'},
-        {time: '00:19', text: '干掉假的rappers当做配菜'},
-        {time: '00:22', text: '你们要记得'},
-        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
-        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
-        {time: '00:28', text: '....'},
-      ],
+        'https://webfs.hw.kugou.com/202407122244/b090b2351caa5fb0e7f0527726785f02/v2/fbc234520fed713c30c1c026e7352770/part/0/960115/G373/M05/83/C7/clip_VZUEAGVDobiANlMfADqkYvFtF5I141.mp3',
+      lyrics: [{time: '00:00', text: 'JAY-周杰伦'}],
     },
   ]);
   const {item, musicList} = route.params;
@@ -383,25 +188,33 @@ const MusicPlayer = ({route}) => {
     let index = loactMusicList.indexOf(currentSong);
     if (index == 0) {
       setCurrentSong(loactMusicList[loactMusicList.length - 1]);
+      scrollViewRef.current.scrollTo({
+        x: screenWidth * 0.9 * (loactMusicList.length - 1),
+        animated: false,
+      });
     } else {
       setCurrentSong(loactMusicList[index - 1]);
+      scrollViewRef.current.scrollTo({
+        x: screenWidth * 0.9 * (index - 1),
+        animated: false,
+      });
     }
-    scrollViewRef.current.scrollTo({
-      x: screenWidth * 0.9 * index + 1,
-      animated: false,
-    });
   };
   const onNextSong = () => {
     let index = loactMusicList.indexOf(currentSong);
     if (index == loactMusicList.length - 1) {
       setCurrentSong(loactMusicList[0]);
+      scrollViewRef.current.scrollTo({
+        x: 0,
+        animated: false,
+      });
     } else {
       setCurrentSong(loactMusicList[index + 1]);
+      scrollViewRef.current.scrollTo({
+        x: screenWidth * 0.9 * (index + 1),
+        animated: false,
+      });
     }
-    scrollViewRef.current.scrollTo({
-      x: screenWidth * 0.9 * index + 1,
-      animated: false,
-    });
   };
   const onChangeStatue = () => {
     paused ? setPaused(false) : setPaused(true);
@@ -456,36 +269,44 @@ const MusicPlayer = ({route}) => {
 
   const scrollViewRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const handleScroll = event => {
-    const {contentOffset, layoutMeasurement} = event.nativeEvent;
-    const offset =
-      contentOffset.x + layoutMeasurement.width - screenWidth * 0.2;
-    const index = Math.floor(offset / layoutMeasurement.width);
-
-    console.log('index', index);
-    console.log('滑动距离', contentOffset.x, '元素宽', layoutMeasurement.width);
-
-    console.log('容器窗口宽度', screenWidth * 0.9);
-    //next图像324
-  };
   const handleMomentumScrollEnd = event => {
     const {contentOffset, layoutMeasurement} = event.nativeEvent;
     const offset =
       contentOffset.x + layoutMeasurement.width - screenWidth * 0.2;
     const index = Math.floor(offset / layoutMeasurement.width);
-    if (contentOffset.x / index + 1 < (screenWidth * 0.9) / 2) {
-      scrollViewRef.current.scrollTo({
-        x: -contentOffset.x,
-        animated: false,
-      });
+    console.log(
+      index,
+      contentOffset,
+      screenWidth * 0.9,
+      '索引，距离，单容器宽'
+    );
+    if (index == 1) {
+      if (contentOffset.x < (screenWidth * 0.9) / 2) {
+        scrollViewRef.current.scrollTo({
+          x: -contentOffset.x,
+          animated: false,
+        });
+      }
+      if (contentOffset.x > (screenWidth * 0.9) / 2)
+        scrollViewRef.current.scrollTo({
+          x: screenWidth * 0.9 * index,
+          animated: false,
+        });
     } else {
-      scrollViewRef.current.scrollTo({
-        x: screenWidth * 0.9 * index + 1,
-        animated: false,
-      });
+      if (contentOffset.x > screenWidth * 0.9 * (index - 0.5)) {
+        scrollViewRef.current.scrollTo({
+          x: screenWidth * 0.9 * index,
+          animated: false,
+        });
+      }
+      if (contentOffset.x > screenWidth * 0.9 * (index - 0.5)) {
+        scrollViewRef.current.scrollTo({
+          x: screenWidth * 0.9 * index,
+          animated: false,
+        });
+      }
     }
     setCurrentIndex(index);
-    console.log('index', index);
   };
   useEffect(() => {
     setCurrentSong(loactMusicList[currentIndex]);
@@ -499,12 +320,11 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'gray',
+          // backgroundColor: 'gray',
         }}>
         <ScrollView
-          scrollEventThrottle={1}
+          // scrollEventThrottle={1}
           ref={scrollViewRef}
-          onScroll={handleScroll}
           onMomentumScrollEnd={handleMomentumScrollEnd}
           showsHorizontalScrollIndicator={false}
           horizontal={true}
