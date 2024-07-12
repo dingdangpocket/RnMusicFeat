@@ -14,7 +14,7 @@ import {ContentContext} from '../../context/ContextProvider';
 import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Next, Last} from '../../icons/index';
-
+import {Svg, Line, Path, Marker} from 'react-native-svg';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
@@ -137,6 +137,10 @@ const MusicPlayer = ({route}) => {
     outputRange: [0, screenWidth * 0.6],
   });
 
+  const StrokeDashoffset =
+    screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
+  //next偏移值=固定总长-（当前偏移比例*固定总长）
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
@@ -178,8 +182,55 @@ const MusicPlayer = ({route}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text>{formatTimeSt(currentTime)}</Text>
-        <Text>{formatTimeSt(durationTime)}</Text>
+        {/* <Text>{formatTimeSt(currentTime)}</Text>
+        <Text>{formatTimeSt(durationTime)}</Text> */}
+        <Svg width={screenWidth * 0.9} height={screenHeight * 0.12}>
+          <Line
+            x1="10"
+            y1="10"
+            x2={screenWidth * 0.88}
+            y2="10"
+            stroke="rgb(50,50,50)"
+            strokeWidth="25"
+          />
+          <Line
+            x1="10"
+            y1="10"
+            x2={String(screenWidth * 0.88)}
+            y2="10"
+            stroke="red"
+            strokeWidth="10"
+            strokeDasharray={String(screenWidth * 0.88)}
+            strokeDashoffset={String(StrokeDashoffset)}
+          />
+          {/* <Line
+            x1="30"
+            y1="30"
+            x2="170"
+            y2="170"
+            stroke="green"
+            strokeWidth="3"
+            markerEnd="url(#arrow)"
+          /> */}
+          {/* <Path
+            d="M40,40 Q80,100 160,40"
+            stroke="purple"
+            strokeWidth="2"
+            fill="none"
+            markerEnd="url(#arrow)"
+            markerMid="url(#arrow)"
+          /> */}
+          {/* <Marker
+            id="arrow"
+            markerWidth="10"
+            markerHeight="10"
+            refX="10"
+            refY="5"
+            markerUnits="strokeWidth"
+            orient="auto">
+            <Path d="M0,0 L0,10 L10,5 z" fill="black" />
+          </Marker> */}
+        </Svg>
       </View>
 
       <View
