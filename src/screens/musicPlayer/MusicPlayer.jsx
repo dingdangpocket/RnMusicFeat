@@ -10,21 +10,341 @@ import {
   PanResponder,
 } from 'react-native';
 import Video from 'react-native-video';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {Next, Last} from '../../icons/index';
 import {Svg, Line, Circle} from 'react-native-svg';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const MusicPlayer = ({route}) => {
+  const [loactMusicList, setLoactMusicList] = useState([
+    {
+      id: '0',
+      index: 0,
+      title: 'Jordann - Dehors',
+      artist: 'Jordann',
+      album: 'Dehors Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20230610/20230610061601506971.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121646/f7711b6e6e754291ad8690461021bcb1/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Dehors Album'},
+        {time: '00:14', text: 'La fanfare frémit au carrefour de ta forme'},
+        {time: '00:25', text: 'Martellant sa poésie diforme'},
+        {
+          time: '00:35',
+          text: 'Cest leau de vie dans la sève la conscience qui sachève',
+        },
+        {time: '00:46', text: 'Témoin de ta vision auditeur de ta prison'},
+        {time: '00:49', text: '....'},
+      ],
+    },
+    {
+      id: '1',
+      index: 1,
+      title: 'bôa - DUVET',
+      artist: 'bôa - DUVET',
+      album: 'Twilight',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20211126/20211126180710114397.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407111744/1b73277dce0a02cd9abae788da4f2327/v2/deb87610f05cc93eaf4c1d95c9337cd4/G369/M0A/8C/13/UZUEAGU82bmANsGGADG6m0DNm0w345.mp3',
+      lyrics: [
+        {time: '00:00', text: 'bôa - DUVET'},
+        {time: '00:01', text: 'And you dont seem to understand'},
+        {time: '00:06', text: 'A shame you seemed an honest man'},
+        {time: '00:11', text: 'And all the fears you hold so dear'},
+        {time: '00:16', text: 'Will turn to whisper in your ear'},
+        {time: '00:21', text: 'And you know what they say might hurt you'},
+        {time: '00:24', text: '....'},
+      ],
+    },
+    {
+      id: '2',
+      index: 2,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '3',
+      index: 3,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '4',
+      index: 4,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '5',
+      index: 5,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '6',
+      index: 6,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '7',
+      index: 7,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '8',
+      index: 8,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '9',
+      index: 9,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '10',
+      index: 10,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '11',
+      index: 11,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+    {
+      id: '12',
+      index: 12,
+      title: '马思唯 - 登机',
+      artist: '马思唯',
+      album: 'Humble Swag Album',
+      duration: 15, // 歌曲时长为60秒
+      artwork:
+        'https://imgessl.kugou.com/stdmusic/20220317/20220317202406892859.jpg',
+      trackUrl:
+        'https://webfs.hw.kugou.com/202407121626/8f62a392febd6836e75556d20d4cf4dc/v2/e4fe9b25f61079452cda17b162451c34/part/0/960131/G336/M04/BD/54/clip_MJUEAGTWqqKAIXipACeBd3APrJo381.mp3',
+      lyrics: [
+        {time: '00:00', text: 'Humble Swag Album'},
+        {time: '00:09', text: '中文说唱除了我之外'},
+        {time: '00:10', text: '都要被区别对待'},
+        {time: '00:12', text: 'My punchline 像本嘻哈圣经被人跪拜'},
+        {time: '00:15', text: '我和我的家族兄弟拳头一致对外'},
+        {time: '00:17', text: '我们的最爱是sipping Henny'},
+        {time: '00:19', text: '干掉假的rappers当做配菜'},
+        {time: '00:22', text: '你们要记得'},
+        {time: '00:23', text: '招惹我们跳火坑是不会有存活率的'},
+        {time: '00:26', text: '你吞了麦克风也无法像我一样押韵'},
+        {time: '00:28', text: '....'},
+      ],
+    },
+  ]);
   const {item, musicList} = route.params;
   const refPlayer = useRef(null);
   const [rate] = useState(1.0);
   const [volume, setVolume] = useState(1.0);
   const [resizeMode, setResizeMode] = useState('contain');
   const [paused, setPaused] = useState(false);
-  const [currentSong, setCurrentSong] = useState(musicList[item.index]);
-  const [loactMusicList, setLoactMusicList] = useState(musicList);
+  const [currentSong, setCurrentSong] = useState(loactMusicList[0]);
   const [currentTime, setCurrentTime] = useState();
   const [currentLyrics, setCurrentLyrics] = useState('');
   const [durationTime, setDurationTime] = useState();
@@ -66,6 +386,10 @@ const MusicPlayer = ({route}) => {
     } else {
       setCurrentSong(loactMusicList[index - 1]);
     }
+    scrollViewRef.current.scrollTo({
+      x: screenWidth * 0.9 * index + 1,
+      animated: false,
+    });
   };
   const onNextSong = () => {
     let index = loactMusicList.indexOf(currentSong);
@@ -74,6 +398,10 @@ const MusicPlayer = ({route}) => {
     } else {
       setCurrentSong(loactMusicList[index + 1]);
     }
+    scrollViewRef.current.scrollTo({
+      x: screenWidth * 0.9 * index + 1,
+      animated: false,
+    });
   };
   const onChangeStatue = () => {
     paused ? setPaused(false) : setPaused(true);
@@ -126,6 +454,43 @@ const MusicPlayer = ({route}) => {
     setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 6));
   }, [StrokeDashoffset]);
 
+  const scrollViewRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handleScroll = event => {
+    const {contentOffset, layoutMeasurement} = event.nativeEvent;
+    const offset =
+      contentOffset.x + layoutMeasurement.width - screenWidth * 0.2;
+    const index = Math.floor(offset / layoutMeasurement.width);
+
+    console.log('index', index);
+    console.log('滑动距离', contentOffset.x, '元素宽', layoutMeasurement.width);
+
+    console.log('容器窗口宽度', screenWidth * 0.9);
+    //next图像324
+  };
+  const handleMomentumScrollEnd = event => {
+    const {contentOffset, layoutMeasurement} = event.nativeEvent;
+    const offset =
+      contentOffset.x + layoutMeasurement.width - screenWidth * 0.2;
+    const index = Math.floor(offset / layoutMeasurement.width);
+    if (contentOffset.x / index + 1 < (screenWidth * 0.9) / 2) {
+      scrollViewRef.current.scrollTo({
+        x: -contentOffset.x,
+        animated: false,
+      });
+    } else {
+      scrollViewRef.current.scrollTo({
+        x: screenWidth * 0.9 * index + 1,
+        animated: false,
+      });
+    }
+    setCurrentIndex(index);
+    console.log('index', index);
+  };
+  useEffect(() => {
+    setCurrentSong(loactMusicList[currentIndex]);
+  }, [currentIndex]);
+
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
@@ -136,27 +501,52 @@ const MusicPlayer = ({route}) => {
           alignItems: 'center',
           backgroundColor: 'gray',
         }}>
-        <View key={currentSong.id}>
-          <Image
-            style={{
-              width: screenWidth * 0.7,
-              height: screenHeight * 0.35,
-              borderRadius: 10,
-              // backgroundColor: 'red',
-              marginBottom: 15,
-            }}
-            source={{
-              uri: currentSong.artwork,
-            }}
-            resizeMode="cover"></Image>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text>{currentSong.title}</Text>
-          </View>
-        </View>
+        <ScrollView
+          scrollEventThrottle={1}
+          ref={scrollViewRef}
+          onScroll={handleScroll}
+          onMomentumScrollEnd={handleMomentumScrollEnd}
+          showsHorizontalScrollIndicator={false}
+          horizontal={true}
+          style={{
+            height: screenHeight * 0.5,
+            width: screenWidth * 0.9,
+            // backgroundColor: 'blue',
+          }}>
+          {loactMusicList.map(item => {
+            return (
+              <View
+                key={item.id}
+                style={{
+                  height: screenHeight * 0.5,
+                  width: screenWidth * 0.9,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  // backgroundColor: 'red',
+                }}>
+                <Image
+                  style={{
+                    width: screenWidth * 0.72,
+                    height: screenHeight * 0.35,
+                    borderRadius: 10,
+                    backgroundColor: 'red',
+                    marginBottom: 15,
+                  }}
+                  source={{
+                    uri: item.artwork,
+                  }}
+                  resizeMode="cover"></Image>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text>{item.title + item.id}</Text>
+                </View>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
       <View
         style={{
