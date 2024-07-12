@@ -29,6 +29,9 @@ const MusicPlayer = ({route}) => {
   const [currentState, setCurrentState] = useState(item.index);
   const [currentSong, setCurrentSong] = useState(musicList[item.index]);
   const [loactMusicList, setLoactMusicList] = useState(musicList);
+  const [currentTime, setCurrentTime] = useState();
+  const [currentLyrics, setCurrentLyrics] = useState('');
+
   useEffect(() => {
     console.log('item', item);
     console.log('musicList', musicList);
@@ -48,9 +51,7 @@ const MusicPlayer = ({route}) => {
   const loadStart = loadStart => {
     console.log('开始加载', loadStart);
   };
-  const onProgress = onProgress => {
-    // console.log('播放进度', onProgress);
-  };
+
   const onEnd = onEnd => {
     console.log('加载结束', onEnd);
   };
@@ -76,11 +77,39 @@ const MusicPlayer = ({route}) => {
   const onChangeStatue = () => {
     paused ? setPaused(false) : setPaused(true);
   };
+  const formatTime = seconds => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    // 将分钟和秒数转换为两位字符串
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedSeconds}`;
+  };
+
+  const onProgress = onProgress => {
+    console.log(
+      '播放进度',
+      // onProgress,
+      onProgress.currentTime,
+      formatTime(onProgress.currentTime)
+    );
+    const res = formatTime(onProgress.currentTime);
+    setCurrentTime(res);
+    currentSong.lyrics.forEach(item => {
+      console.log(item);
+      if (item.time == res) {
+        setCurrentLyrics(item.text);
+        console.log('歌词', item.text);
+      }
+    });
+  };
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <View
         style={{
-          height: screenHeight * 0.68,
+          height: screenHeight * 0.5,
           width: screenWidth * 0.9,
           justifyContent: 'center',
           alignItems: 'center',
@@ -93,6 +122,7 @@ const MusicPlayer = ({route}) => {
               height: screenHeight * 0.22,
               borderRadius: 10,
               backgroundColor: 'red',
+              marginBottom: 15,
             }}
             source={{
               uri: currentSong.artwork,
@@ -102,7 +132,6 @@ const MusicPlayer = ({route}) => {
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: 15,
             }}>
             <Text>{currentSong.title}</Text>
           </View>
@@ -111,19 +140,30 @@ const MusicPlayer = ({route}) => {
       <View
         style={{
           width: screenWidth * 0.9,
-          height: screenHeight * 0.1,
+          height: screenHeight * 0.12,
           borderRadius: 10,
-          backgroundColor: 'blue',
+          backgroundColor: 'rgb(220,220,220)',
           justifyContent: 'center',
           alignItems: 'center',
         }}></View>
       <View
         style={{
           width: screenWidth * 0.9,
+          height: screenHeight * 0.12,
+          borderRadius: 10,
+          backgroundColor: 'rgb(180,180,180)',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text>{currentLyrics}</Text>
+      </View>
+      <View
+        style={{
+          width: screenWidth * 0.9,
           height: screenHeight * 0.1,
           borderRadius: 10,
-          backgroundColor: 'green',
-          justifyContent: 'center',
+          // backgroundColor: 'green',
+          justifyContent: 'space-around',
           alignItems: 'center',
           flexDirection: 'row',
         }}>
