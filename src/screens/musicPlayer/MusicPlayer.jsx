@@ -306,12 +306,6 @@ const MusicPlayer = ({route}) => {
     const offset =
       contentOffset.x + layoutMeasurement.width - screenWidth * 0.2;
     const index = Math.floor(offset / layoutMeasurement.width);
-    console.log(
-      index,
-      contentOffset.x,
-      screenWidth * 1,
-      '索引，距离，单容器宽'
-    );
     if (index == 1) {
       if (contentOffset.x < (screenWidth * 1) / 2) {
         scrollViewRef.current.scrollTo({
@@ -366,7 +360,6 @@ const MusicPlayer = ({route}) => {
             width: 100,
             height: 100,
             zIndex: 3,
-            rotate: 30,
           }}
           source={require('../../public/citou.png')}
           resizeMode="contain"></Image>

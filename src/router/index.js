@@ -31,7 +31,7 @@ const RecommendedStackRoutes = [
 
 const EventStackRoutes = [];
 export const containStackRoutes = [
-  ...RecommendedStackRoutes,
+  // ...RecommendedStackRoutes,
   ...HomeStackRoutes,
   ...StorageStackRoutes,
   ...WechatStackRoutes,

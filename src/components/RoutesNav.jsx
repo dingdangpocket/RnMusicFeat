@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {containStackRoutes} from 'src/router/index';
 import HomeTabRoutes from 'src/components/HomeTabsRoutes';
+import MusicPlayer from 'src/screens/musicPlayer/MusicPlayer';
 const Stack = createStackNavigator();
 const linking = {
   prefixes: ['foundation://'],
@@ -21,6 +22,11 @@ const RoutesNav = () => {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator>
+        <Stack.Screen
+          name="MusicPlayer"
+          component={MusicPlayer}
+          options={{header: () => null, title: '播放器'}}
+        />
         <Stack.Screen
           name="HomeTabs"
           component={HomeTabRoutes}
