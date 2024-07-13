@@ -8,6 +8,7 @@ import {
   Image,
   Animated,
   PanResponder,
+  Easing,
 } from 'react-native';
 import Video from 'react-native-video';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
@@ -188,14 +189,14 @@ const MusicPlayer = ({route}) => {
     if (index == 0) {
       setCurrentSong(loactMusicList[loactMusicList.length - 1]);
       scrollViewRef.current.scrollTo({
-        x: screenWidth * 0.9 * (loactMusicList.length - 1),
-        animated: false,
+        x: screenWidth * 1 * (loactMusicList.length - 1),
+        animated: true,
       });
     } else {
       setCurrentSong(loactMusicList[index - 1]);
       scrollViewRef.current.scrollTo({
-        x: screenWidth * 0.9 * (index - 1),
-        animated: false,
+        x: screenWidth * 1 * (index - 1),
+        animated: true,
       });
     }
   };
@@ -205,18 +206,19 @@ const MusicPlayer = ({route}) => {
       setCurrentSong(loactMusicList[0]);
       scrollViewRef.current.scrollTo({
         x: 0,
-        animated: false,
+        animated: true,
       });
     } else {
       setCurrentSong(loactMusicList[index + 1]);
       scrollViewRef.current.scrollTo({
-        x: screenWidth * 0.9 * (index + 1),
-        animated: false,
+        x: screenWidth * 1 * (index + 1),
+        animated: true,
       });
     }
   };
   const onChangeStatue = () => {
     paused ? setPaused(false) : setPaused(true);
+    paused ? startRotation() : stopRotation();
   };
   const onProgress = onProgress => {
     if (
@@ -236,20 +238,49 @@ const MusicPlayer = ({route}) => {
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
   //进度偏移值=固定总长-（当前偏移比例*固定总长）
 
+  const [isRotating, setIsRotating] = useState(false);
+  const rotationValue = useRef(new Animated.Value(0)).current;
+  const rotateInterpolation = rotationValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+  const startRotation = () => {
+    rotationValue.setValue(0);
+    Animated.timing(rotationValue, {
+      toValue: 1,
+      duration: 8000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+      isInteraction: false,
+    }).start(({finished}) => {
+      if (finished) {
+        startRotation();
+      }
+    });
+    setIsRotating(true);
+  };
+  const stopRotation = () => {
+    rotationValue.stopAnimation();
+    setIsRotating(false);
+  };
+
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderGrant: (event, gestureState) => {},
+    onPanResponderGrant: (event, gestureState) => {
+      stopRotation();
+    },
     onPanResponderMove: (event, gestureState) => {
+      stopRotation();
       setPaused(true);
       const newX = event.nativeEvent.locationX - gestureState.moveX;
       setPointX(newX);
-      if (gestureState.moveX > screenWidth * 0.88) {
+      if (gestureState.moveX > screenWidth * 1) {
         onNextSong();
       }
       if (gestureState.moveX < 15) {
         onLastSong();
       } else {
-        const rate = gestureState.moveX / (screenWidth * 0.88);
+        const rate = gestureState.moveX / (screenWidth * 1);
         const seekTime = durationTime * rate;
         setCurrentTime(seekTime);
         //注意！keyCode
@@ -259,6 +290,7 @@ const MusicPlayer = ({route}) => {
     onPanResponderRelease: (event, gestureState) => {
       setPointX(event.nativeEvent.locationX - gestureState.moveX);
       setPaused(false);
+      startRotation();
     },
   });
   const [pointX, setPointX] = useState();
@@ -275,33 +307,34 @@ const MusicPlayer = ({route}) => {
     const index = Math.floor(offset / layoutMeasurement.width);
     console.log(
       index,
-      contentOffset,
-      screenWidth * 0.9,
+      contentOffset.x,
+      screenWidth * 1,
       '索引，距离，单容器宽'
     );
     if (index == 1) {
-      if (contentOffset.x < (screenWidth * 0.9) / 2) {
+      if (contentOffset.x < (screenWidth * 1) / 2) {
         scrollViewRef.current.scrollTo({
           x: -contentOffset.x,
-          animated: false,
+          animated: true,
         });
       }
-      if (contentOffset.x > (screenWidth * 0.9) / 2)
+      if (contentOffset.x > (screenWidth * 1) / 2)
         scrollViewRef.current.scrollTo({
-          x: screenWidth * 0.9 * index,
-          animated: false,
+          x: screenWidth * 1 * index,
+          animated: true,
         });
     } else {
-      if (contentOffset.x > screenWidth * 0.9 * (index - 0.5)) {
+      if (contentOffset.x > screenWidth * 1 * (index - 0.5)) {
         scrollViewRef.current.scrollTo({
-          x: screenWidth * 0.9 * index,
-          animated: false,
+          x: screenWidth * 1 * index,
+          animated: true,
         });
       }
-      if (contentOffset.x > screenWidth * 0.9 * (index - 0.5)) {
+      if (contentOffset.x < screenWidth * 1 * (index - 0.5)) {
         scrollViewRef.current.scrollTo({
-          x: screenWidth * 0.9 * index,
-          animated: false,
+          // x: -(screenWidth *1 * index - (screenWidth *1 * index - 1)),
+          x: screenWidth * 1 * (index - 1),
+          animated: true,
         });
       }
     }
@@ -309,6 +342,7 @@ const MusicPlayer = ({route}) => {
   };
   useEffect(() => {
     setCurrentSong(loactMusicList[currentIndex]);
+    startRotation();
   }, [currentIndex]);
 
   return (
@@ -316,7 +350,7 @@ const MusicPlayer = ({route}) => {
       <View
         style={{
           height: screenHeight * 0.5,
-          width: screenWidth * 0.9,
+          width: screenWidth * 1,
           justifyContent: 'center',
           alignItems: 'center',
           // backgroundColor: 'gray',
@@ -326,10 +360,13 @@ const MusicPlayer = ({route}) => {
           ref={scrollViewRef}
           onMomentumScrollEnd={handleMomentumScrollEnd}
           showsHorizontalScrollIndicator={false}
+          scrollEventThrottle={10}
+          maximumZoomScale={1.5}
+          minimumZoomScale={0.8}
           horizontal={true}
           style={{
             height: screenHeight * 0.5,
-            width: screenWidth * 0.9,
+            width: screenWidth * 1,
             // backgroundColor: 'blue',
           }}>
           {loactMusicList.map(item => {
@@ -338,27 +375,40 @@ const MusicPlayer = ({route}) => {
                 key={item.id}
                 style={{
                   height: screenHeight * 0.5,
-                  width: screenWidth * 0.9,
+                  width: screenWidth * 1,
                   justifyContent: 'center',
                   alignItems: 'center',
                   // backgroundColor: 'red',
                 }}>
-                <Image
-                  style={{
-                    width: screenWidth * 0.72,
-                    height: screenHeight * 0.35,
-                    borderRadius: 10,
-                    // backgroundColor: 'red',
-                    marginBottom: 15,
-                  }}
-                  source={{
-                    uri: item.artwork,
-                  }}
-                  resizeMode="cover"></Image>
+                <Animated.View
+                  style={[
+                    {
+                      transform: [{rotate: rotateInterpolation}],
+                    },
+                  ]}>
+                  <Image
+                    style={{
+                      width: 280,
+                      height: 280,
+                      borderRadius: 140,
+                      // backgroundColor: 'red',
+                      // marginBottom: 15,
+                      borderWidth: 35,
+                      borderColor: 'rgb(45,45,45)',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    source={{
+                      uri: item.artwork,
+                    }}
+                    resizeMode="contain"></Image>
+                </Animated.View>
+
                 <View
                   style={{
                     justifyContent: 'center',
                     alignItems: 'center',
+                    marginTop: 15,
                   }}>
                   <Text>{item.title + item.id}</Text>
                 </View>
