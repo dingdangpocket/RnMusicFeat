@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useRef, useState, useContext, useEffect, Button} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -143,7 +143,6 @@ const MusicPlayer = ({route}) => {
       lyrics: [{time: '00:00', text: 'JAY-周杰伦'}],
     },
   ]);
-  const {item, musicList} = route.params;
   const refPlayer = useRef(null);
   const [rate] = useState(1.0);
   const [volume, setVolume] = useState(1.0);
@@ -174,12 +173,6 @@ const MusicPlayer = ({route}) => {
       duration: onLoad.duration * 1000,
       useNativeDriver: false,
     }).start();
-  };
-  const loadStart = loadStart => {
-    // console.log('开始加载', loadStart);
-  };
-  const onEnd = onEnd => {
-    // console.log('加载结束', onEnd);
   };
   const onSeek = timeInSeconds => {
     refPlayer.current.seek(timeInSeconds);
@@ -332,7 +325,6 @@ const MusicPlayer = ({route}) => {
       }
       if (contentOffset.x < screenWidth * 1 * (index - 0.5)) {
         scrollViewRef.current.scrollTo({
-          // x: -(screenWidth *1 * index - (screenWidth *1 * index - 1)),
           x: screenWidth * 1 * (index - 1),
           animated: true,
         });
@@ -346,7 +338,12 @@ const MusicPlayer = ({route}) => {
   }, [currentIndex]);
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
       <View
         style={{
           height: screenHeight * 0.5,
@@ -355,6 +352,18 @@ const MusicPlayer = ({route}) => {
           alignItems: 'center',
           // backgroundColor: 'gray',
         }}>
+        <Image
+          style={{
+            position: 'absolute',
+            left: 220,
+            top: 20,
+            width: 100,
+            height: 100,
+            zIndex: 3,
+            rotate: 30,
+          }}
+          source={require('../../public/citou.png')}
+          resizeMode="contain"></Image>
         <ScrollView
           // scrollEventThrottle={1}
           ref={scrollViewRef}
@@ -378,7 +387,7 @@ const MusicPlayer = ({route}) => {
                   width: screenWidth * 1,
                   justifyContent: 'center',
                   alignItems: 'center',
-                  // backgroundColor: 'red',
+                  backgroundColor: 'rgb(240,240,240)',
                 }}>
                 <Animated.View
                   style={[
@@ -391,10 +400,8 @@ const MusicPlayer = ({route}) => {
                       width: 280,
                       height: 280,
                       borderRadius: 140,
-                      // backgroundColor: 'red',
-                      // marginBottom: 15,
                       borderWidth: 35,
-                      borderColor: 'rgb(45,45,45)',
+                      borderColor: 'rgba(20,20,20,0.99)',
                       justifyContent: 'center',
                       alignItems: 'center',
                     }}
@@ -410,7 +417,7 @@ const MusicPlayer = ({route}) => {
                     alignItems: 'center',
                     marginTop: 15,
                   }}>
-                  <Text>{item.title + item.id}</Text>
+                  <Text>{item.title}</Text>
                 </View>
               </View>
             );
@@ -559,9 +566,7 @@ const MusicPlayer = ({route}) => {
         volume={volume}
         muted={false}
         onLoad={onLoad}
-        onLoadStart={loadStart}
         onProgress={onProgress}
-        onEnd={onEnd}
         repeat={false}
         resizeMode={resizeMode}
         onError={onError}
