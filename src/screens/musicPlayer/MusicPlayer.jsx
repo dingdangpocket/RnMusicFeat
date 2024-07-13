@@ -422,19 +422,19 @@ const MusicPlayer = ({route}) => {
         style={{
           width: screenWidth * 0.9,
           height: screenHeight * 0.12,
-          borderRadius: 10,
-          // backgroundColor: 'rgb(10,80,80)',
           ...styles.center,
           marginTop: 10,
+          borderRadius: 10,
+          // backgroundColor: 'rgb(10,80,80)',
         }}>
         <View
           style={{
             width: screenWidth * 0.83,
             height: screenHeight * 0.03,
             flexDirection: 'row',
-            //backgroundColor: 'green',
             justifyContent: 'space-between',
             alignItems: 'center',
+            //backgroundColor: 'green',
           }}>
           <Text>{formatTimeSt(currentTime)}</Text>
           <Text>{formatTimeSt(durationTime)}</Text>
@@ -493,10 +493,10 @@ const MusicPlayer = ({route}) => {
           width: screenWidth * 0.9,
           height: screenHeight * 0.1,
           borderRadius: 10,
-          // backgroundColor: 'green',
           justifyContent: 'space-around',
           alignItems: 'center',
           flexDirection: 'row',
+          // backgroundColor: 'green',
         }}>
         <TouchableOpacity
           onPress={onLastSong}
