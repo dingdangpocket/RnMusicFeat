@@ -152,6 +152,7 @@ const MusicPlayer = ({route}) => {
   const [currentTime, setCurrentTime] = useState();
   const [currentLyrics, setCurrentLyrics] = useState('');
   const [durationTime, setDurationTime] = useState();
+
   const formatTimeSt = seconds => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
@@ -159,9 +160,7 @@ const MusicPlayer = ({route}) => {
     const formattedSeconds = String(remainingSeconds).padStart(2, '0');
     return `${formattedMinutes}:${formattedSeconds}`;
   };
-  const onError = onError => {
-    console.log('播放错误', onError);
-  };
+
   const onLoad = onLoad => {
     if (onLoad) {
       setDurationTime(onLoad.duration);
@@ -174,9 +173,11 @@ const MusicPlayer = ({route}) => {
       useNativeDriver: false,
     }).start();
   };
+
   const onSeek = timeInSeconds => {
     refPlayer.current.seek(timeInSeconds);
   };
+
   const onLastSong = () => {
     let index = loactMusicList.indexOf(currentSong);
     if (index == 0) {
@@ -193,6 +194,7 @@ const MusicPlayer = ({route}) => {
       });
     }
   };
+
   const onNextSong = () => {
     let index = loactMusicList.indexOf(currentSong);
     if (index == loactMusicList.length - 1) {
@@ -209,10 +211,12 @@ const MusicPlayer = ({route}) => {
       });
     }
   };
+
   const onChangeStatue = () => {
     paused ? setPaused(false) : setPaused(true);
     paused ? startRotation() : stopRotation();
   };
+
   const onProgress = onProgress => {
     if (
       String(formatTimeSt(onProgress.currentTime)) == formatTimeSt(durationTime)
@@ -226,6 +230,7 @@ const MusicPlayer = ({route}) => {
       }
     });
   };
+
   const progress = new Animated.Value(0);
   const StrokeDashoffset =
     screenWidth * 0.88 - (currentTime / durationTime) * screenWidth * 0.88;
@@ -237,6 +242,7 @@ const MusicPlayer = ({route}) => {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg'],
   });
+
   const startRotation = () => {
     rotationValue.setValue(0);
     Animated.timing(rotationValue, {
@@ -252,6 +258,7 @@ const MusicPlayer = ({route}) => {
     });
     setIsRotating(true);
   };
+
   const stopRotation = () => {
     rotationValue.stopAnimation();
     setIsRotating(false);
@@ -286,6 +293,7 @@ const MusicPlayer = ({route}) => {
       startRotation();
     },
   });
+
   const [pointX, setPointX] = useState();
   useEffect(() => {
     setPointX(String(screenWidth * 0.88 - StrokeDashoffset + 6));
@@ -332,6 +340,7 @@ const MusicPlayer = ({route}) => {
     }
     setCurrentIndex(index);
   };
+
   useEffect(() => {
     setCurrentSong(loactMusicList[currentIndex]);
     startRotation();
@@ -341,16 +350,13 @@ const MusicPlayer = ({route}) => {
     <View
       style={{
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        ...styles.center,
       }}>
       <View
         style={{
           height: screenHeight * 0.5,
           width: screenWidth * 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          // backgroundColor: 'gray',
+          ...styles.center,
         }}>
         <Image
           style={{
@@ -365,13 +371,10 @@ const MusicPlayer = ({route}) => {
           source={require('../../public/citou.png')}
           resizeMode="contain"></Image>
         <ScrollView
-          // scrollEventThrottle={1}
           ref={scrollViewRef}
           onMomentumScrollEnd={handleMomentumScrollEnd}
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={10}
-          maximumZoomScale={1.5}
-          minimumZoomScale={0.8}
           horizontal={true}
           style={{
             height: screenHeight * 0.5,
@@ -402,8 +405,7 @@ const MusicPlayer = ({route}) => {
                       borderRadius: 140,
                       borderWidth: 35,
                       borderColor: 'rgba(20,20,20,0.99)',
-                      justifyContent: 'center',
-                      alignItems: 'center',
+                      ...styles.center,
                     }}
                     source={{
                       uri: item.artwork,
@@ -413,8 +415,7 @@ const MusicPlayer = ({route}) => {
 
                 <View
                   style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    ...styles.center,
                     marginTop: 15,
                   }}>
                   <Text>{item.title}</Text>
@@ -430,8 +431,7 @@ const MusicPlayer = ({route}) => {
           height: screenHeight * 0.12,
           borderRadius: 10,
           // backgroundColor: 'rgb(10,80,80)',
-          justifyContent: 'center',
-          alignItems: 'center',
+          ...styles.center,
           marginTop: 10,
         }}>
         <View
@@ -489,8 +489,7 @@ const MusicPlayer = ({route}) => {
           height: screenHeight * 0.06,
           borderRadius: 10,
           backgroundColor: 'rgba(180,180,180,0.2)',
-          justifyContent: 'center',
-          alignItems: 'center',
+          ...styles.center,
           marginTop: 5,
           marginBottom: 10,
         }}>
@@ -513,8 +512,7 @@ const MusicPlayer = ({route}) => {
             height: screenHeight * 0.07,
             width: screenWidth * 0.2,
             borderRadius: 30,
-            justifyContent: 'center',
-            alignItems: 'center',
+            ...styles.center,
           }}>
           <Last width="30%" height="30%" />
         </TouchableOpacity>
@@ -526,8 +524,7 @@ const MusicPlayer = ({route}) => {
               height: screenHeight * 0.07,
               width: screenWidth * 0.3,
               borderRadius: 30,
-              justifyContent: 'center',
-              alignItems: 'center',
+              ...styles.center,
             }}>
             {paused ? (
               <Image
@@ -549,8 +546,7 @@ const MusicPlayer = ({route}) => {
             height: screenHeight * 0.07,
             width: screenWidth * 0.2,
             borderRadius: 30,
-            justifyContent: 'center',
-            alignItems: 'center',
+            ...styles.center,
           }}>
           <Next width="30%" height="30%" onPress={onNextSong} />
         </TouchableOpacity>
@@ -569,7 +565,6 @@ const MusicPlayer = ({route}) => {
         onProgress={onProgress}
         repeat={false}
         resizeMode={resizeMode}
-        onError={onError}
       />
     </View>
   );
@@ -584,6 +579,10 @@ const styles = StyleSheet.create({
     height: 15,
     width: 0,
     backgroundColor: 'blue',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default MusicPlayer;
