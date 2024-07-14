@@ -1,5 +1,5 @@
 import Error from 'src/screens/error/Error';
-import InfoScreen from 'src/screens/wechat/InfoScreen';
+import InfoScreen from 'src/screens/animated/InfoScreen';
 import MusicPlayer from 'src/screens/musicPlayer/MusicPlayer';
 
 const StorageStackRoutes = [];
@@ -9,8 +9,7 @@ const WechatStackRoutes = [
   {
     name: 'InfoScreen',
     component: InfoScreen,
-    option: {title: 'InfoScreen'},
-    headerShown: true,
+    option: {title: 'InfoScreen', headerShown: () => null},
   },
 ];
 const ErrorStackRoutes = [

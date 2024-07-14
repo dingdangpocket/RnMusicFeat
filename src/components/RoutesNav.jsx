@@ -22,11 +22,11 @@ const RoutesNav = () => {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="MusicPlayer"
           component={MusicPlayer}
           options={{header: () => null, title: '播放器'}}
-        />
+        /> */}
         <Stack.Screen
           name="HomeTabs"
           component={HomeTabRoutes}
@@ -39,7 +39,7 @@ const RoutesNav = () => {
               name={item.name}
               options={{
                 title: item.option.title,
-                headerShown: item.option.headerShown,
+                header: item.option.headerShown,
               }}
               component={item.component}
             />
