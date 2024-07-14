@@ -120,11 +120,11 @@ const InfoScreen = ({route}) => {
         {...panResponder.panHandlers}
         style={[
           {
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
+            width: Dimensions.get('window').width * 0.9,
+            height: Dimensions.get('window').height * 0.9,
             backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
-            borderRadius: 50,
+            borderRadius: 40,
             justifyContent: 'flex-start',
             alignItems: 'flex-end',
             zIndex: 5,
@@ -148,7 +148,7 @@ const InfoScreen = ({route}) => {
             alignItems: 'center',
             backgroundColor: 'red',
           }}>
-          <Text style={{fontSize: 10,color:"white"}}>X</Text>
+          <Text style={{fontSize: 10, color: 'white'}}>X</Text>
         </TouchableOpacity>
       </Animated.View>
       {light ? (
