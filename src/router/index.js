@@ -20,6 +20,7 @@ const ErrorStackRoutes = [
     headerShown: true,
   },
 ];
+
 const RecommendedStackRoutes = [
   {
     name: 'MusicPlayer',

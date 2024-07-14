@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 const InfoScreen = ({route}) => {
-  const [light, setLight] = useState(false);
+  const [light, setLight] = useState(true);
   const [previousPan, setPreviousPan] = useState({x: 0, y: 0});
   const [pan] = useState(new Animated.ValueXY({x: 0, y: -100}));
   const panResponder = PanResponder.create({
@@ -45,15 +45,15 @@ const InfoScreen = ({route}) => {
     setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
-        toValue: 1,
+        toValue: 2,
         duration: 1000,
         easing: Easing.ease,
         useNativeDriver: true,
       }),
     ]).start(() => {
-      setLight(true);
+      console.log('?');
       setDisable(false);
-
+      setLight(false);
     });
     // Animated.sequence([
     //   Animated.timing(scaleAnim, {
@@ -91,16 +91,20 @@ const InfoScreen = ({route}) => {
         useNativeDriver: true, // 使用原生驱动可以提供更好的性能
       }),
     ]).start(() => {
+      pan.setValue({
+        x: 0,
+        y: 0,
+      });
       setDisable(false);
-      setLight(false);
+      setLight(true);
     });
   };
 
   const onChange = () => {
-    console.log('1');
+    console.log('light', light);
     if (disable) return;
-    light ? closeAnimation() : startAnimation();
-    setLight(!light);
+    light ? startAnimation() : closeAnimation();
+    // setLight(!light);
   };
 
   return (
@@ -116,7 +120,7 @@ const InfoScreen = ({route}) => {
         style={[
           {
             width: 100,
-            height:100,
+            height: 100,
             backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
             borderRadius: 50,
@@ -133,7 +137,7 @@ const InfoScreen = ({route}) => {
           },
         ]}>
         <TouchableOpacity
-          onPress={() => onChange()}
+          onPress={() => closeAnimation()}
           style={{
             width: 30,
             height: 30,
@@ -146,9 +150,9 @@ const InfoScreen = ({route}) => {
         </TouchableOpacity>
       </Animated.View>
 
-      {!light ? (
+      {light ? (
         <TouchableOpacity
-          onPress={() => onChange()}
+          onPress={() => startAnimation()}
           style={{
             width: 100,
             height: 100,
