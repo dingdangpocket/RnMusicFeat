@@ -47,7 +47,6 @@ const InfoScreen = ({route}) => {
   const [disable, setDisable] = useState(false);
   const startAnimation = () => {
     console.log('startAnimation');
-    // setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
         toValue: 1,
@@ -56,7 +55,6 @@ const InfoScreen = ({route}) => {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      // setDisable(false);
       setLight(false);
     });
     // Animated.sequence([
@@ -77,7 +75,6 @@ const InfoScreen = ({route}) => {
 
   const closeAnimation = () => {
     setLight(true);
-    // setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
         toValue: 0,
@@ -106,8 +103,6 @@ const InfoScreen = ({route}) => {
       // setLight(true);
     });
   };
-
-  const screen = [{offset: 10}, {offset: 10}, {offset: 10}, {offset: 10}];
   return (
     <View
       style={{
