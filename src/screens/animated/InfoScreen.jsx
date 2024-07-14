@@ -120,11 +120,11 @@ const InfoScreen = ({route}) => {
         {...panResponder.panHandlers}
         style={[
           {
-            width: Dimensions.get('window').width * 0.9,
-            height: Dimensions.get('window').height * 0.9,
+            width: Dimensions.get('window').width * 0.8,
+            height: Dimensions.get('window').height * 0.8,
             backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
-            borderRadius: 40,
+            borderRadius: 5,
             justifyContent: 'flex-start',
             alignItems: 'flex-end',
             zIndex: 5,
@@ -139,15 +139,20 @@ const InfoScreen = ({route}) => {
         ]}>
         <TouchableOpacity
           onPress={() => closeAnimation()}
-          style={{
-            width: 30,
-            height: 30,
-            borderRadius: 15,
-            backgroundColor: 'rgb(150,150,150)',
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'red',
-          }}>
+          style={[
+            {
+              width: 30,
+              height: 30,
+              borderRadius: 5,
+              backgroundColor: 'rgb(150,150,150)',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'red',
+            },
+            {
+              transform: [{scale: scaleAnim}],
+            },
+          ]}>
           <Text style={{fontSize: 10, color: 'white'}}>X</Text>
         </TouchableOpacity>
       </Animated.View>
