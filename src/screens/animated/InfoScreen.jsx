@@ -71,6 +71,7 @@ const InfoScreen = ({route}) => {
   };
 
   const closeAnimation = () => {
+    setLight(true);
     setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
@@ -97,7 +98,7 @@ const InfoScreen = ({route}) => {
       //注意重置元素动画完成后的坐标，下次start动画才会从这个位置开始缩放；
       //否则会按照动画删除后的位置缩放，所以看不见；
       setDisable(false);
-      setLight(true);
+      // setLight(true);
     });
   };
 
@@ -107,7 +108,6 @@ const InfoScreen = ({route}) => {
     light ? startAnimation() : closeAnimation();
     // setLight(!light);
   };
-
   return (
     <View
       style={{
@@ -146,15 +146,16 @@ const InfoScreen = ({route}) => {
             backgroundColor: 'rgb(150,150,150)',
             justifyContent: 'center',
             alignItems: 'center',
+            backgroundColor: 'red',
           }}>
-          <Text style={{fontSize: 10}}>X</Text>
+          <Text style={{fontSize: 10,color:"white"}}>X</Text>
         </TouchableOpacity>
       </Animated.View>
-
       {light ? (
         <TouchableOpacity
           onPress={() => startAnimation()}
           style={{
+            marginTop: -100,
             width: 100,
             height: 100,
             borderRadius: 50,
