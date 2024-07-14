@@ -23,7 +23,7 @@ const InfoScreen = ({route}) => {
       android: (event, gesture) =>
         Math.abs(gesture.dx) > 10 || Math.abs(gesture.dy) > 10,
     }),
-    // 在 Android 上，平移事件与触摸事件混杂在一起。PanResponder捕获每个触摸事件。您必须设置一个阈值，并告诉PanResponder只有达到阈值时才捕获事件。
+    // 在Android 上,平移事件与触摸事件混杂在一起。PanResponder捕获每个触摸事件。您必须设置一个阈值，并告诉PanResponder只有达到阈值时才捕获事件。
     onPanResponderMove: (event, gesture) => {
       pan.setValue({
         x: previousPan.x + gesture.dx,
@@ -135,18 +135,22 @@ const InfoScreen = ({route}) => {
           <Text style={{fontSize: 10}}>startAnimation</Text>
         </TouchableOpacity>
       </Animated.View>
-      <TouchableOpacity
-        onPress={() => onChange()}
-        style={{
-          width: 100,
-          height: 100,
-          borderRadius: 50,
-          backgroundColor: 'rgb(150,150,150)',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text style={{fontSize: 10}}>startAnimation</Text>
-      </TouchableOpacity>
+      {!light ? (
+        <TouchableOpacity
+          onPress={() => onChange()}
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 50,
+            backgroundColor: 'rgb(150,150,150)',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 10}}>startAnimation</Text>
+        </TouchableOpacity>
+      ) : (
+        ''
+      )}
     </View>
   );
 };
