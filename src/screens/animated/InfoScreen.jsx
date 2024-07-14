@@ -51,8 +51,9 @@ const InfoScreen = ({route}) => {
         useNativeDriver: true,
       }),
     ]).start(() => {
-      // setLight(true);
+      setLight(true);
       setDisable(false);
+
     });
     // Animated.sequence([
     //   Animated.timing(scaleAnim, {
@@ -79,9 +80,19 @@ const InfoScreen = ({route}) => {
         easing: Easing.ease,
         useNativeDriver: true,
       }),
+      Animated.timing(pan.x, {
+        toValue: Dimensions.get('window').width - 10, // 屏幕宽度减去10像素
+        duration: 500,
+        useNativeDriver: true, // 使用原生驱动可以提供更好的性能
+      }),
+      Animated.timing(pan.y, {
+        toValue: Dimensions.get('window').height - 10, // 屏幕高度减去10像素
+        duration: 500,
+        useNativeDriver: true, // 使用原生驱动可以提供更好的性能
+      }),
     ]).start(() => {
       setDisable(false);
-      // setLight(false);
+      setLight(false);
     });
   };
 
@@ -104,13 +115,13 @@ const InfoScreen = ({route}) => {
         {...panResponder.panHandlers}
         style={[
           {
-            width: Dimensions.get('window').width,
-            height: Dimensions.get('window').height,
+            width: 100,
+            height:100,
             backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
             borderRadius: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-end',
             zIndex: 5,
           },
           {
@@ -120,21 +131,21 @@ const InfoScreen = ({route}) => {
               {scale: scaleAnim},
             ],
           },
-          // {pointerEvents: 'box-none'},
         ]}>
         <TouchableOpacity
           onPress={() => onChange()}
           style={{
-            width: 100,
-            height: 100,
-            borderRadius: 50,
+            width: 30,
+            height: 30,
+            borderRadius: 15,
             backgroundColor: 'rgb(150,150,150)',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 10}}>startAnimation</Text>
+          <Text style={{fontSize: 10}}>X</Text>
         </TouchableOpacity>
       </Animated.View>
+
       {!light ? (
         <TouchableOpacity
           onPress={() => onChange()}
@@ -145,6 +156,8 @@ const InfoScreen = ({route}) => {
             backgroundColor: 'rgb(150,150,150)',
             justifyContent: 'center',
             alignItems: 'center',
+            zIndex: 1,
+            backgroundColor: 'red',
           }}>
           <Text style={{fontSize: 10}}>startAnimation</Text>
         </TouchableOpacity>
