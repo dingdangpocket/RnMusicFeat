@@ -7,19 +7,23 @@ import {
   Easing,
   PanResponder,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 const InfoScreen = ({route}) => {
-  const [light, setLight] = useState(true);
+  const [light, setLight] = useState(false);
   const [previousPan, setPreviousPan] = useState({x: 0, y: 0});
-  const [pan] = useState(new Animated.ValueXY());
+  const [pan] = useState(new Animated.ValueXY({x: 0, y: -100}));
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (event, gesture) => {
       return true;
     },
-    onMoveShouldSetPanResponder: (event, gesture) => {
-      return true;
-    },
+    onMoveShouldSetPanResponder: Platform.select({
+      default: () => true,
+      android: (event, gesture) =>
+        Math.abs(gesture.dx) > 10 || Math.abs(gesture.dy) > 10,
+    }),
+    // 在 Android 上，平移事件与触摸事件混杂在一起。PanResponder捕获每个触摸事件。您必须设置一个阈值，并告诉PanResponder只有达到阈值时才捕获事件。
     onPanResponderMove: (event, gesture) => {
       pan.setValue({
         x: previousPan.x + gesture.dx,
@@ -34,50 +38,60 @@ const InfoScreen = ({route}) => {
       });
     },
   });
-
-  useEffect(() => {
-    Animated.timing(pan, {
-      toValue: {x: 0, y: 0},
-      duration: 500,
-      easing: Easing.linear,
-      useNativeDriver: false,
-    }).start();
-    startAnimation();
-  }, []);
-
-  const scaleAnim = useRef(new Animated.Value(1)).current;
-  const fadeAnim = useRef(new Animated.Value(1)).current;
-
+  const [scaleAnim, setScaleAnim] = useState(new Animated.Value(1));
+  const [fadeAnim, setFadeAnim] = useState(new Animated.Value(1));
+  const [disable, setDisable] = useState(false);
   const startAnimation = () => {
+    setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
-        toValue: 2,
-        duration: 2000,
+        toValue: 1,
+        duration: 1000,
         easing: Easing.ease,
-        useNativeDriver: false,
+        useNativeDriver: true,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      // setLight(true);
+      setDisable(false);
+    });
+    // Animated.sequence([
+    //   Animated.timing(scaleAnim, {
+    //     toValue: 2,
+    //     duration: 2000,
+    //     easing: Easing.ease,
+    //     useNativeDriver: false,
+    //   }),
+    //   Animated.timing(scaleAnim, {
+    //     toValue: 2,
+    //     duration: 2000,
+    //     easing: Easing.ease,
+    //     useNativeDriver: false,
+    //   }),
+    // ]).start;
   };
 
   const closeAnimation = () => {
+    setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
         toValue: 0,
-        duration: 2000,
+        duration: 1000,
         easing: Easing.ease,
-        useNativeDriver: false,
+        useNativeDriver: true,
       }),
-    ]).start(() => {});
+    ]).start(() => {
+      setDisable(false);
+      // setLight(false);
+    });
   };
 
-  const onClose = () => {
-    closeAnimation();
-    // setLight(false);
+  const onChange = () => {
+    console.log('1');
+    if (disable) return;
+    light ? closeAnimation() : startAnimation();
+    setLight(!light);
   };
-  const onStart = () => {
-    startAnimation();
-    // setLight(true);
-  };
+
   return (
     <View
       style={{
@@ -86,15 +100,18 @@ const InfoScreen = ({route}) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      
       <Animated.View
         {...panResponder.panHandlers}
         style={[
           {
-            width: 100,
-            height: 100,
-            backgroundColor: 'red',
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
+            backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
+            borderRadius: 50,
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 5,
           },
           {
             transform: [
@@ -103,22 +120,32 @@ const InfoScreen = ({route}) => {
               {scale: scaleAnim},
             ],
           },
-        ]}></Animated.View>
-      
+          // {pointerEvents: 'box-none'},
+        ]}>
+        <TouchableOpacity
+          onPress={() => onChange()}
+          style={{
+            width: 100,
+            height: 100,
+            borderRadius: 50,
+            backgroundColor: 'rgb(150,150,150)',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Text style={{fontSize: 10}}>startAnimation</Text>
+        </TouchableOpacity>
+      </Animated.View>
       <TouchableOpacity
-        onPress={() => onStart()}
-        style={{width: 100, height: 100, backgroundColor: 'rgb(150,150,150)'}}>
-        <Text>开启</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => onClose()}
-        style={{width: 100, height: 100, backgroundColor: 'rgb(150,150,150)'}}>
-        <Text>关闭</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => setLight(!light)}
-        style={{width: 50, height: 50, backgroundColor: 'rgb(150,150,150)'}}>
-        <Text>控制</Text>
+        onPress={() => onChange()}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 50,
+          backgroundColor: 'rgb(150,150,150)',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={{fontSize: 10}}>startAnimation</Text>
       </TouchableOpacity>
     </View>
   );

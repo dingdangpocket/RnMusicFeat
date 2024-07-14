@@ -28,7 +28,7 @@ const MusicPlayer = ({route}) => {
       artwork:
         'https://imgessl.kugou.com/stdmusic/20230610/20230610061601506971.jpg',
       trackUrl:
-        'https://webfs.hw.kugou.com/202407121646/f7711b6e6e754291ad8690461021bcb1/KGTX/CLTX001/3d6391a8a0fb81b62c68c6a4429f63fd.mp3',
+        'https://webfs.hw.kugou.com/202407142010/53a8bdaef440da245c387fef05b9d2d5/KGTX/CLTX001/fc98ca1bb834649c6d2f5223f344d08b.mp3',
       lyrics: [
         {time: '00:00', text: 'Dehors Album'},
         {time: '00:14', text: 'La fanfare frémit au carrefour de ta forme'},
@@ -170,7 +170,7 @@ const MusicPlayer = ({route}) => {
     Animated.timing(progress, {
       toValue: 30,
       duration: onLoad.duration * 1000,
-      useNativeDriver: false,
+      useNativeDriver: true,
     }).start();
   };
 
@@ -466,13 +466,13 @@ const MusicPlayer = ({route}) => {
               strokeDasharray={String(screenWidth * 0.88)}
               strokeDashoffset={String(StrokeDashoffset)}
             />
-            <Circle
-              {...panResponder.panHandlers}
-              cx={pointX}
-              cy="10"
-              r="10"
-              fill="rgb(210,210,210)"
-            />
+               <Circle
+                {...panResponder.panHandlers}
+                cx={pointX}
+                cy="10"
+                r="10"
+                fill="rgb(210,210,210)"
+              />
           </Svg>
         </View>
       </View>

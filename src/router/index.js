@@ -24,13 +24,13 @@ const RecommendedStackRoutes = [
   {
     name: 'MusicPlayer',
     component: MusicPlayer,
-    option: {title: 'MusicPlayer', headerShown: false},
+    option: {title: 'MusicPlayer', headerShown: () => null},
   },
 ];
 
 const EventStackRoutes = [];
 export const containStackRoutes = [
-  // ...RecommendedStackRoutes,
+  ...RecommendedStackRoutes,
   ...HomeStackRoutes,
   ...StorageStackRoutes,
   ...WechatStackRoutes,
