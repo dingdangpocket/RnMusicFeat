@@ -13,7 +13,7 @@ import {
 const InfoScreen = ({route}) => {
   const [light, setLight] = useState(true);
   const [previousPan, setPreviousPan] = useState({x: 0, y: 0});
-  const [pan] = useState(new Animated.ValueXY({x: 0, y: -100}));
+  const [pan] = useState(new Animated.ValueXY({x: 0, y: 0}));
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (event, gesture) => {
       return true;
@@ -45,13 +45,12 @@ const InfoScreen = ({route}) => {
     setDisable(true);
     Animated.parallel([
       Animated.timing(scaleAnim, {
-        toValue: 2,
+        toValue: 1,
         duration: 1000,
         easing: Easing.ease,
         useNativeDriver: true,
       }),
     ]).start(() => {
-      console.log('?');
       setDisable(false);
       setLight(false);
     });
@@ -81,20 +80,22 @@ const InfoScreen = ({route}) => {
         useNativeDriver: true,
       }),
       Animated.timing(pan.x, {
-        toValue: Dimensions.get('window').width - 10, // 屏幕宽度减去10像素
+        toValue: Dimensions.get('window').width - 10,
         duration: 500,
-        useNativeDriver: true, // 使用原生驱动可以提供更好的性能
+        useNativeDriver: true,
       }),
       Animated.timing(pan.y, {
-        toValue: Dimensions.get('window').height - 10, // 屏幕高度减去10像素
+        toValue: Dimensions.get('window').height - 10,
         duration: 500,
-        useNativeDriver: true, // 使用原生驱动可以提供更好的性能
+        useNativeDriver: true,
       }),
     ]).start(() => {
       pan.setValue({
         x: 0,
         y: 0,
       });
+      //注意重置元素动画完成后的坐标，下次start动画才会从这个位置开始缩放；
+      //否则会按照动画删除后的位置缩放，所以看不见；
       setDisable(false);
       setLight(true);
     });
@@ -119,8 +120,8 @@ const InfoScreen = ({route}) => {
         {...panResponder.panHandlers}
         style={[
           {
-            width: 100,
-            height: 100,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
             backgroundColor: 'rgb(180,180,180)',
             opacity: fadeAnim,
             borderRadius: 50,
