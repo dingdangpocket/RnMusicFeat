@@ -1,6 +1,6 @@
-import Error from 'src/screens/error/Error';
-import InfoScreen from 'src/screens/animated/InfoScreen';
-import MusicPlayer from 'src/screens/musicPlayer/MusicPlayer';
+import Error from '../screens/error/Error';
+import InfoScreen from '../screens/wechat/InfoScreen';
+import MusicPlayer from '../screens/musicPlayer/MusicPlayer';
 
 const StorageStackRoutes = [];
 const HomeStackRoutes = [];
@@ -20,12 +20,11 @@ const ErrorStackRoutes = [
     headerShown: true,
   },
 ];
-
 const RecommendedStackRoutes = [
   {
     name: 'MusicPlayer',
     component: MusicPlayer,
-    option: {title: 'MusicPlayer', headerShown: () => null},
+    option: {title: 'MusicPlayer', headerShown: ()=>null},
   },
 ];
 

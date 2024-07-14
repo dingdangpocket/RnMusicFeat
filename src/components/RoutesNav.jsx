@@ -2,8 +2,8 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {containStackRoutes} from 'src/router/index';
-import HomeTabRoutes from 'src/components/HomeTabsRoutes';
-import MusicPlayer from 'src/screens/musicPlayer/MusicPlayer';
+import HomeTabRoutes from './HomeTabsRoutes';
+import MusicPlayer from '../screens/musicPlayer/MusicPlayer';
 const Stack = createStackNavigator();
 const linking = {
   prefixes: ['foundation://'],

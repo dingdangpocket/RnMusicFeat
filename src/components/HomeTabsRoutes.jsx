@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import RecommendedTab from 'src/screens/tabScreens/RecommendedTab';
-import AccountTab from 'src/screens/tabScreens/AccountTab';
+import RecommendedTab from '../screens/tabScreens/RecommendedTab';
+import AccountTab from '../screens/tabScreens/AccountTab';
 import {TouchableOpacity} from 'react-native';
 import {RecommendedIconActive, MineIconActive} from 'src/icons';
 const Tab = createBottomTabNavigator();
